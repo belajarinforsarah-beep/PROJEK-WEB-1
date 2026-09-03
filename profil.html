@@ -10,6 +10,7 @@
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             background-color: rgba(114, 207, 148, 0.827);
             color: rgb(2, 0, 0);
+            ov
         }
 
         header {
@@ -47,7 +48,7 @@
             flex-wrap: wrap;
             padding: 10px;
             gap: 10px;
-            background-color: rgb(35, 169, 84);
+            background-color: rgb(54, 158, 92);
             color: aliceblue;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
@@ -74,7 +75,7 @@
         }
 
         .photo-profil-container {
-            background-color: rgb(1, 122, 64);
+            background-color: rgb(51, 120, 83);
             margin: 20px 0;
             padding-top: 20px;
             padding-bottom: 20px;
@@ -87,33 +88,65 @@
 
         img {
             max-width: 100%;
+            height: auto;
         }
 
         section {
             display: none;
         }
 
-        /* 2. Tampilkan section Home saat halaman pertama kali dibuka */
-        section:first-child {
+        .content section:first-child {
             display: block;
         }
 
-        /* 3. Jika ada section yang aktif diklik (:target), sembunyikan Home */
+        /* Sembunyikan section pertama jika ada target URL (#photo, #james, dll.) yang aktif */
         .content:has(:target) section:first-child {
             display: none;
         }
 
-        /* 4. Tampilkan HANYA section yang sedang diklik */
+        /* Tampilkan HANYA section yang ID-nya sedang aktif/diklik */
         section:target {
             display: block !important;
         }
 
-        .content:has(:target) section#photo {
-            display: block;
+        .content:has(#profil:target) #members {
+            display: none !important;
+        }
+
+        .content:has(:target):not(:has(#profil:target)) #members {
+            display: block !important;
         }
 
         .photo-description {
-            width:400px;
+            width: 90%;
+            max-width: 800px;
+            text-align: justify;
+            margin: 0 auto;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: aliceblue;
+            background-color: rgb(104, 153, 129);
+            padding: 20px;
+            padding: auto;
+            text-align: ;
+        }
+
+        h2 {
+            color: rgb(28, 74, 49);
+        }
+
+        .ke1 {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            background-color: rgb(206, 255, 205);
+            padding: 1%;
+        }
+
+        .ke2 {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
             text-align: justify;
         }
     </style>
@@ -126,7 +159,7 @@
     </header>
     <nav>
         <a href="#profil">Profil</a>
-        <a href="#photo">Photo</a>
+        <a href="#members">Members</a>
     </nav>
     <div class="content">
 
@@ -136,6 +169,25 @@
                 <img width="500"
                     src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/16e219337bde450fbff2052bdadc1fa0.jpg" />
             </div>
+            <div class="ke1">
+                <p>CORTIS (코르티스) adalah boy group beranggotakan 5 orang di bawah naungan label BIGHIT MUSIC / HYBE. Grup
+                    ini resmi meluncurkan karya debut mereka pada 18 Agustus 2025 melalui single "What You Want" dan
+                    disusul dengan mini album (EP) debut bertajuk COLOR OUTSIDE THE LINES. CORTIS dikenal sebagai "Young
+                    Creator Crew" karena seluruh anggotanya berpartisipasi aktif dalam proses pembuatan lagu, aransemen
+                    musik, koreografi, hingga konsep visual video klip mereka.</p>
+            </div>
+                <h2>Konsep "COLOR OUTSIDE THE LINES"</h2>
+                <div class="ke2">
+                <p>Nama CORTIS diambil dari penggabungan enam huruf dalam frasa "COLOR OUTSIDE THE LINES"</p>
+                <ul>
+                    <li>Makna Filosofis: Nama ini melambangkan semangat untuk berpikir secara bebas, mendobrak batasan
+                        standar, serta tidak terikat oleh aturan atau norma kaku yang dibuat oleh dunia.</li>
+                    <li>Pendekatan Kreatif: CORTIS tidak menerapkan pembagian posisi kaku (seperti main vocal atau main
+                        dancer utama saja), melainkan bekerja secara kolaboratif sebagai sebuah tim kreator mandiri yang
+                        mengekspresikan cerita masa muda secara jujur dan otentik.</li>
+                </ul>
+                </div>
+            
         </section>
 
         <section id="james">
@@ -144,10 +196,20 @@
                 <img width="500"
                     src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/4b3c0911616f4c1280bf1602197ac417.jpg" />
             </div>
+            <div class="photo-description">
+                <ul>
+                    <li>Tanggal Lahir: 14 Oktober 2005 (Umur 20 tahun)</li>
+                    <li>Kewarganegaraan / Asal: Hong Kong (Keturunan Thailand-Taiwan)</li>
+                    <li>Latar Belakang & Track Record: Menguasai 5 bahasa. Sebelum debut, ia merupakan trainee BIGHIT
+                        MUSIC yang memfokuskan keahliannya pada tarian dan koreografi. James terlibat langsung dalam
+                        pembuatan koreografi untuk lagu debut CORTIS serta berpartisipasi menciptakan koreografi untuk
+                        grup HYBE lainnya (seperti lagu viral "Magnetic" dari ILLIT).</li>
+                </ul>
+            </div>
         </section>
 
         <section id="keonho">
-            <h2>KEONHO</h2>
+            <h2>KEONHO (건호)</h2>
             <div class="photo-profil-container">
                 <img width="500"
                     src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/7b4d76643163474cb573714bc0042073.jpg" />
@@ -167,42 +229,73 @@
             </div>
         </section>
         <section id="martin">
-            <h2>MARTIN</h2>
+            <h2>MARTIN (마틴)</h2>
             <div class="photo-profil-container">
                 <img width="500"
                     src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/6dec4dd5bdf3434aaa1c30990e2fe292.jpg" />
             </div>
+            <div class="photo-description">
+                <ul>
+                    <li>Tanggal Lahir: 20 Maret 2008 (Umur 18 tahun)</li>
+                    <li>Kewarganegaraan / Asal: Kanada - Korea Selatan</li>
+                    <li>Latar Belakang & Track Record: Bertindak sebagai Leader. Martin memiliki rekam jejak yang sangat
+                        kuat di bidang songwriting dan produksi musik sejak masa trainee. Ia telah berkontribusi sebagai
+                        produser/komponis dalam lagu-lagu hits artis HYBE lain seperti TOMORROW X TOGETHER ("Deja Vu"),
+                        LE SSERAFIM ("Pierrot"), dan ILLIT ("Magnetic").</li>
+                </ul>
+            </div>
         </section>
 
         <section id="juhoon">
-            <h2>JUHOON</h2>
+            <h2>JUHOON (주훈)</h2>
             <div class="photo-profil-container">
                 <img width="500"
                     src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/7da49e46dfd74b2081982ae96f12dc2a.jpg" />
             </div>
+            <div class="photo-description">
+                <ul>
+                    <li>Tanggal Lahir: 3 Januari 2008 (Umur 18 tahun)</li>
+                    <li>Kewarganegaraan / Asal: Korea Selatan</li>
+                    <li>Latar Belakang & Track Record: Mengawali kariernya di dunia hiburan sebagai model cilik dan
+                        sempat aktif sebagai atlet basket remaja. Bergabung dengan BIGHIT MUSIC sebagai trainee dan
+                        menunjukkan bakat pesat dalam penulisan lirik. Juhoon berpartisipasi menulis lirik untuk
+                        sebagian besar trek dalam album COLOR OUTSIDE THE LINES seperti "GO!", "FaSHioN", dan "JoyRide".
+                    </li>
+                </ul>
+            </div>
         </section>
 
         <section id="seonghyeon">
-            <h2>SEONGHYEON</h2>
+            <h2>SEONGHYEON (성현)</h2>
             <div class="photo-profil-container">
                 <img width="500"
                     src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/44eef26ad19e47ea898da0f88e15abef.jpg" />
             </div>
+            <div class="photo-description">
+                <ul>
+                    <li>Tanggal Lahir: 13 Januari 2009 (Umur 17 tahun)</li>
+                    <li>Kewarganegaraan / Asal: Korea Selatan</li>
+                    <li>Latar Belakang & Track Record: Dikenal sebagai salah satu pemikir kreatif dalam grup. Seonghyeon
+                        aktif terlibat dalam memberikan ide-ide visual, gaya estetika (fashion), serta penulisan lagu.
+                        Karakter suara dan ekspresi performanya memberikan warna tersendiri bagi konsep keseluruhan
+                        CORTIS.</li>
+                </ul>
+            </div>
         </section>
 
-        <section id="photo">
+        <section id="members" class="always-visible">
             <h2>Members</h2>
             <div class="photo-list-container">
                 <a href="#james">
                     <div>
-                        <img width="100"
+                        <img width="120"
                             src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/4b3c0911616f4c1280bf1602197ac417.jpg" />
                         <div>JAMES</div>
                     </div>
                 </a>
                 <a href="#keonho">
                     <div>
-                        <img width="100"
+                        <img width="120"
                             src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/7b4d76643163474cb573714bc0042073.jpg" />
                         <div>KEONHO</div>
                     </div>
@@ -210,21 +303,21 @@
 
                 <a href="#martin">
                     <div>
-                        <img width="100"
+                        <img width="120"
                             src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/6dec4dd5bdf3434aaa1c30990e2fe292.jpg" />
                         <div>MARTIN</div>
                     </div>
                 </a>
                 <a href="#juhoon">
                     <div>
-                        <img width="100"
+                        <img width="120"
                             src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/7da49e46dfd74b2081982ae96f12dc2a.jpg" />
                         <div>JUHOON</div>
                     </div>
                 </a>
                 <a href="#seonghyeon">
                     <div>
-                        <img width="100"
+                        <img width="120"
                             src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/44eef26ad19e47ea898da0f88e15abef.jpg" />
                         <div>SEONGHYEON</div>
                     </div>
