@@ -11,10 +11,11 @@
             background-color: rgba(114, 207, 148, 0.827);
             color: rgb(2, 0, 0);
         }
+
         header {
             background-color: rgb(54, 153, 90);
             text-align: center;
-            padding: 15px ;
+            padding: 15px;
             margin: 5px 0;
         }
 
@@ -57,6 +58,11 @@
             flex-direction: column;
             margin: 5px;
         }
+
+        div.photo-list-container a {
+            color: aliceblue;
+        }
+
         #profil {
             padding-bottom: 20px;
         }
@@ -66,18 +72,49 @@
             margin-left: auto;
             margin-right: auto;
         }
+
         .photo-profil-container {
             background-color: rgb(1, 122, 64);
             margin: 20px 0;
-            padding-top: 20px ;
-            padding-bottom: 20px ;
+            padding-top: 20px;
+            padding-bottom: 20px;
 
         }
+
         .content {
             text-align: center;
         }
+
         img {
             max-width: 100%;
+        }
+
+        section {
+            display: none;
+        }
+
+        /* 2. Tampilkan section Home saat halaman pertama kali dibuka */
+        section:first-child {
+            display: block;
+        }
+
+        /* 3. Jika ada section yang aktif diklik (:target), sembunyikan Home */
+        .content:has(:target) section:first-child {
+            display: none;
+        }
+
+        /* 4. Tampilkan HANYA section yang sedang diklik */
+        section:target {
+            display: block !important;
+        }
+
+        .content:has(:target) section#photo {
+            display: block;
+        }
+
+        .photo-description {
+            width:400px;
+            text-align: justify;
         }
     </style>
 </head>
@@ -88,60 +125,113 @@
             src="https://image.weversejapan.com/official/live/cortis/contents/logo/e63720a5871443788d5a427b06903741.png" />
     </header>
     <nav>
-        <a href="#home">Home</a>
         <a href="#profil">Profil</a>
         <a href="#photo">Photo</a>
     </nav>
     <div class="content">
-        <section id="home">
-            <h2>Welcome to CORTIS world</h2>
-            <p>Website ini merupakan platform edukasi dan karya ilmiah visual yang didedikasikan untuk menampilkan
-                informasi mengenai CORTIS (코르티스), grup musik di bawah naungan BIGHIT MUSIC / HYBE.
-                Di sini, Anda dapat menjelajahi profil para anggota—JAMES, KEONHO, MARTIN, JUHOON, dan SEONGHYEON—serta
-                mengakses dokumentasi foto dan informasi mengenai rilisan musik terbaru seperti
-                'GREENGREEN_playextended'.
-            </p>
-        </section>
 
         <section id="profil">
             <h2>Profil</h2>
             <div class="photo-profil-container">
-            <img width="500"
-                src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/16e219337bde450fbff2052bdadc1fa0.jpg" />
+                <img width="500"
+                    src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/16e219337bde450fbff2052bdadc1fa0.jpg" />
+            </div>
+        </section>
+
+        <section id="james">
+            <h2>JAMES (제임스)</h2>
+            <div class="photo-profil-container">
+                <img width="500"
+                    src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/4b3c0911616f4c1280bf1602197ac417.jpg" />
+            </div>
+        </section>
+
+        <section id="keonho">
+            <h2>KEONHO</h2>
+            <div class="photo-profil-container">
+                <img width="500"
+                    src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/7b4d76643163474cb573714bc0042073.jpg" />
+            </div>
+            <div class="photo-description">
+                <ul>
+                    <li>Lahir: 14 Februari 2009 (Umur 17 tahun)</li>
+                    <li>Kewarganegaraan / Asal: Korea Selatan</li>
+                    <li>Latar Belakang & Track Record: Merupakan anggota tertua paling muda (Maknae). Meskipun paling
+                        muda,
+                        Keonho dikenal sebagai all-rounder yang serba bisa. Ia ikut serta menyusun lirik dan melodi di
+                        beberapa
+                        lagu debut CORTIS, termasuk "What You Want" dan "GO!".</li>
+                </ul>
+
+
+            </div>
+        </section>
+        <section id="martin">
+            <h2>MARTIN</h2>
+            <div class="photo-profil-container">
+                <img width="500"
+                    src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/6dec4dd5bdf3434aaa1c30990e2fe292.jpg" />
+            </div>
+        </section>
+
+        <section id="juhoon">
+            <h2>JUHOON</h2>
+            <div class="photo-profil-container">
+                <img width="500"
+                    src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/7da49e46dfd74b2081982ae96f12dc2a.jpg" />
+            </div>
+        </section>
+
+        <section id="seonghyeon">
+            <h2>SEONGHYEON</h2>
+            <div class="photo-profil-container">
+                <img width="500"
+                    src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/44eef26ad19e47ea898da0f88e15abef.jpg" />
             </div>
         </section>
 
         <section id="photo">
             <h2>Members</h2>
             <div class="photo-list-container">
-                <div>
-                    <img width="100"
-                        src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/4b3c0911616f4c1280bf1602197ac417.jpg" />
-                    <div>JAMES</div>
-                </div>
-                <div>
-                    <img width="100"
-                        src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/7b4d76643163474cb573714bc0042073.jpg" />
-                    <div>KEONHO</div>
-                </div>
-                <div>
-                    <img width="100"
-                        src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/6dec4dd5bdf3434aaa1c30990e2fe292.jpg" />
-                    <div>MARTIN</div>
-                </div>
-                <div>
-                    <img width="100"
-                        src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/7da49e46dfd74b2081982ae96f12dc2a.jpg" />
-                    <div>JUHOON</div>
-                </div>
-                <div>
-                    <img width="100"
-                        src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/44eef26ad19e47ea898da0f88e15abef.jpg" />
-                    <div>SEONGHYEON</div>
+                <a href="#james">
+                    <div>
+                        <img width="100"
+                            src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/4b3c0911616f4c1280bf1602197ac417.jpg" />
+                        <div>JAMES</div>
+                    </div>
+                </a>
+                <a href="#keonho">
+                    <div>
+                        <img width="100"
+                            src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/7b4d76643163474cb573714bc0042073.jpg" />
+                        <div>KEONHO</div>
+                    </div>
+                </a>
 
-                </div>
+                <a href="#martin">
+                    <div>
+                        <img width="100"
+                            src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/6dec4dd5bdf3434aaa1c30990e2fe292.jpg" />
+                        <div>MARTIN</div>
+                    </div>
+                </a>
+                <a href="#juhoon">
+                    <div>
+                        <img width="100"
+                            src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/7da49e46dfd74b2081982ae96f12dc2a.jpg" />
+                        <div>JUHOON</div>
+                    </div>
+                </a>
+                <a href="#seonghyeon">
+                    <div>
+                        <img width="100"
+                            src="https://image.weversejapan.com/official/live/cortis/contents/profile/3/44eef26ad19e47ea898da0f88e15abef.jpg" />
+                        <div>SEONGHYEON</div>
+                    </div>
+                </a>
             </div>
         </section>
+
     </div>
     <footer>
         <div>&copy; 2026 Proyek Tugas HTML Sekolah - Dibuat oleh Nurin & Sarah. </div>
