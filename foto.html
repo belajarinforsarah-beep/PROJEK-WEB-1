@@ -8,9 +8,37 @@
     <style>
         body {
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            background-color: rgba(114, 207, 148, 0.827);
+            background-color: rgb(49, 113, 73);
             color: rgb(2, 0, 0);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
 
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -5%;
+            left: -5%;
+            width: 110%;
+            height: 110%;
+            background-image: url('weverse_1-306207514.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            /* 2. EFEK FADE / KEGELAPAN BACKGROUND (Atur kecerahan di sini) */
+            /* Nilai 0.5 = 50% gelap (bisa kamu ubah dari 0.1 sampai 1.0) */
+            filter: brightness(0.5);
+            /* 3. EFEK SMOOTH / HALUS */
+            /* transform 0.2s ease-out membuat pergerakan kursor terasa sangat mulus dan elastis */
+            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+
+            z-index: -1;
+            /* Memastikan background selalu ada di belakang konten */
+            transform: translate(var(--bg-x, 0px), var(--bg-y, 0px)) scale(1.08);
         }
 
         header {
@@ -18,6 +46,47 @@
             text-align: center;
             padding: 15px;
             margin: 5px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            /* Warna transparan dengan efek blur di belakangnya */
+            background: rgba(35, 103, 72, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            display: flex;
+            justify-content: space-between;
+            /* Logo di kiri, Menu di kanan */
+            align-items: center;
+            padding: 10px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo:hover {
+            transform: none;
+            filter: none;
+        }
+
+        .header-logo {
+            width: 40px;
+            /* Ukuran logo */
+            height: auto;
+            border-radius: 6px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+            color: aliceblue;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
         nav {
@@ -25,6 +94,10 @@
             display: flex;
             padding: 10px 0;
             background-color: rgb(9, 64, 39);
+            display: flex;
+            background-color: transparent;
+            /* Transparan mengikuti header */
+            padding: 0;
         }
 
         nav a {
@@ -45,6 +118,15 @@
         img {
             max-width: 100%;
             width: 300px;
+            transition: all 0.3s ease;
+
+        }
+
+        img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.15);
+            cursor: pointer;
+            /* Mengubah kursor jadi telunjuk */
         }
 
         .foto-list-container {
@@ -55,9 +137,15 @@
         .klik-foto {
             margin: 20px;
         }
+
         a {
-            color: rgb(2, 51, 38);
+            color: rgb(243, 248, 247);
             text-align: center;
+        }
+
+        body::before {
+            /* Menghubungkan variabel posisi dari JavaScript + Zoom (scale) */
+            transform: translate(var(--bg-x, 0px), var(--bg-y, 0px)) scale(1.08);
         }
     </style>
 
@@ -65,32 +153,57 @@
 
 <body>
     <header>
-        <h1>PHOTO</h1>
+        
+        <div class="logo-box">
+            <!-- Ganti 'logo.png' dengan nama file logomu -->
+            <img src="2b64053aa52e4706ac5db831415cc435.png" alt="Logo CORTIS" class="header-logo">
+            <h1>PHOTO</h1>
+        </div>
+
+        <nav>
+            <a href="#photo">Photo</a>
+            <a href="#about">About</a>
+        </nav>
     </header>
     <section id="photo">
         <div class="foto-list-container">
-            <a href="#allobank">
+            <a href="allobank.html">
                 <div class="klik-foto">
-                    <img width="120px" src="file:///C:/Users/nurin_2xmqp/Downloads/weverse_4-335927852.jpeg" />
+                    <img width="120px" src="weverse_4-335927852.jpeg" />
                     <div>Allo Bank Festival</div>
                 </div>
             </a>
-            <a href="#greengreen">
+            <a href="greengreen.html">
                 <div class="klik-foto">
-                    <img src="file:///C:/Users/nurin_2xmqp/Downloads/weverse_1-304437090.jpeg" />
+                    <img src="weverse_1-304437090.jpeg" />
                     <div>GREEN GREEN Music Show Moments</div>
                 </div>
             </a>
-            <a href="#releaseparty">
+            <a href="releaseparty.html">
                 <div class="klik-foto">
-                    <img src="file:///C:/Users/nurin_2xmqp/Downloads/weverse_4-333192117.jpeg" />
+                    <img src="weverse_4-333192117.jpeg" />
                     <div>The 2nd EP RELEASE PARTY</div>
                 </div>
             </a>
 
         </div>
     </section>
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            // Menghitung posisi kursor dari titik tengah layar (-1 sampai 1)
+            const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
 
+            // Jarak pergeseran gambar (semakin besar angkanya, semakin jauh gesernya)
+            const moveX = mouseX * 20; // 20px ke kanan/kiri
+            const moveY = mouseY * 20; // 20px ke atas/bawah
+
+            // Menerapkan Efek Pergeseran + Zoom (scale 1.05 = nge-zoom 5%)
+            const bg = document.querySelector('body');
+            bg.style.setProperty('--bg-x', `${moveX}px`);
+            bg.style.setProperty('--bg-y', `${moveY}px`);
+        });
+    </script>
 
 
 </body>

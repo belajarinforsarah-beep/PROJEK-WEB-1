@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORTIS</title>
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: rgb(0, 0, 0);
+            color: rgb(2, 0, 0);
+
+        }
+
+        header {
+            background-color: rgb(46, 99, 65);
+            text-align: center;
+            padding: 15px;
+            margin: 5px 0;
+            color: aliceblue;
+            text-shadow: 4px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            justify-content: center;
+            display: flex;
+            padding: 10px 0;
+            background-color: rgb(9, 64, 39);
+        }
+
+        nav a {
+            color: rgb(134, 193, 100);
+            margin: 15px;
+
+        }
+
+        footer {
+            background-color: rgb(35, 103, 72);
+            text-align: center;
+            color: rgb(205, 252, 252);
+            margin: 15px 0;
+            padding: 10px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        img {
+            max-width: 100%;
+            width: 500px;
+        }
+
+        a {
+            color: rgb(243, 248, 247);
+            text-align: center;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 8px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        /* Foto Utama */
+        .carousel-container img {
+            width: 100%;
+            max-height: 800px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+
+        /* Styling Tombol Prev & Next */
+        .prev-btn,
+        .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+
+        .prev-btn:hover,
+        .next-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            max-width: 2000px;
+            margin: auto;
+            padding: 80px;
+        }
+
+        
+        .prev-btn,
+        .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .prev-btn {
+            left: 15px;
+        }
+
+        .next-btn {
+            right: 15px;
+        }
+
+        .prev-btn:hover,
+        .next-btn:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Container Thumbnail */
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 5px;
+        }
+
+        /* Styling Gambar Kecil (Thumbnail) */
+        .thumb {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.6;
+            /* Dibuat agak redup kalau tidak dipilih */
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        /* Efek saat Thumbnail di-hover */
+        .thumb:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* Tampilan Thumbnail yang Sedang Aktif Dipilih */
+        .thumb.active {
+            opacity: 1;
+            border-color: #ffffff;
+            /* Border putih terang */
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Allo Bank Festival</h1>
+    </header>
+    <section id="allobank">
+        <div class="gallery-wrapper">
+            <!-- Area Foto Utama + Tombol Panah -->
+            <div class="carousel-container">
+                <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+
+                <img id="main-image" src="weverse_4-335927853 (1).jpeg" alt="Allo Bank Festival">
+
+                <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+
+            <!-- Deretan Thumbnail di Bawah -->
+            <div class="thumbnail-container">
+                <img class="thumb active" src="weverse_4-335927853 (1).jpeg" onclick="selectImage(0)">
+                <img class="thumb" src="weverse_4-335927852.jpeg" onclick="selectImage(1)">
+                <img class="thumb" src="weverse_3-335458293.jpeg" onclick="selectImage(2)">
+            </div>
+        </div>
+    </section>
+    <script>
+
+        const images = [
+            'weverse_4-335927853 (1).jpeg',
+            'weverse_4-335927852.jpeg',
+            'weverse_3-335458293.jpeg'
+        ];
+
+        let currentIndex = 0;
+
+        function updateGallery() {
+            // Ganti foto utama
+            document.getElementById('main-image').src = images[currentIndex];
+
+            // Update kelas active pada thumbnail
+            const thumbnails = document.querySelectorAll('.thumb');
+            thumbnails.forEach((thumb, index) => {
+                if (index === currentIndex) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        // Fungsi saat tombol panah diklik (-1 atau 1)
+        function changeSlide(direction) {
+            currentIndex += direction;
+
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+
+            updateGallery();
+        }
+
+        // Fungsi saat thumbnail diklik berdasarkan urutannya (0, 1, 2, dst)
+        function selectImage(index) {
+            currentIndex = index;
+            updateGallery();
+        }
+
+    </script>
+
+
+</body>
