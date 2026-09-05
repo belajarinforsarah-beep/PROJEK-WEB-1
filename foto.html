@@ -25,7 +25,7 @@
             left: -5%;
             width: 110%;
             height: 110%;
-            background-image: url('weverse_1-306207514.jpeg');
+            background-image: url('weverse_3-336822377.jpeg');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -131,7 +131,23 @@
 
         .foto-list-container {
             display: flex;
+            justify-content: center;
+            /* Mengetengahkan isi foto */
+            align-items: center;
+            flex-wrap: wrap;
+            /* Memperbolehkan foto turun ke baris baru */
+            max-width: 1100px;
+            /* Membatasi lebar agar baris pertama cukup untuk 3 foto saja */
+            margin: 0 auto;
             color: aliceblue;
+        }
+
+        #photo {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
         }
 
         .klik-foto {
@@ -153,7 +169,7 @@
 
 <body>
     <header>
-        
+
         <div class="logo-box">
             <!-- Ganti 'logo.png' dengan nama file logomu -->
             <img src="2b64053aa52e4706ac5db831415cc435.png" alt="Logo CORTIS" class="header-logo">
@@ -175,7 +191,7 @@
             </a>
             <a href="greengreen.html">
                 <div class="klik-foto">
-                    <img src="weverse_1-304437090.jpeg" />
+                    <img src="greengreen/weverse_1-304437090.jpeg" />
                     <div>GREEN GREEN Music Show Moments</div>
                 </div>
             </a>
@@ -184,6 +200,12 @@
                     <img src="weverse_4-333192117.jpeg" />
                     <div>The 2nd EP RELEASE PARTY</div>
                 </div>
+            </a>
+            <a href="putyourphonedown.html">
+                <div class="klik-foto">
+                    <img src="putyourphonedown/weverse_4-337293409.jpeg" />
+                    <div>2026 CORTIS TOUR PYPD</div>
+                </div> 
             </a>
 
         </div>
