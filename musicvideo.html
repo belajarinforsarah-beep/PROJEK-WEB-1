@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +27,16 @@
             cursor: pointer;
             width: fit-content;
             margin-bottom: 1.5rem;
+            /* MODIFIKASI UNTUK PINDAH KE KANAN */
+            position: absolute;
+            top: 2rem;
+            /* Sesuaikan jarak dari atas layar */
+            right: 5%;
+            /* Sejajar dengan padding kanan body (5%) */
+            z-index: 10000;
+            /* Agar tombol tetap di atas elemen lain */
         }
+
         .hamburger span {
             width: 25px;
             height: 3px;
@@ -35,7 +45,7 @@
         }
 
         .nav-menu {
-            display: none; 
+            display: none;
             position: fixed;
             top: 60px;
             right: 20px;
@@ -302,9 +312,11 @@
         .modal-content::-webkit-scrollbar {
             width: 8px;
         }
+
         .modal-content::-webkit-scrollbar-track {
             background: #12141a;
         }
+
         .modal-content::-webkit-scrollbar-thumb {
             background: #00ff66;
             border-radius: 4px;
@@ -325,6 +337,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">
@@ -360,15 +373,16 @@
 
     <footer>
         <div>&copy; 2026 Proyek Tugas HTML Sekolah - Dibuat oleh Nurin & Sarah.</div>
-        <div><small>Disclaimer: Website ini dibuat hanya untuk tugas sekolah. Seluruh hak cipta foto & logo milik BIGHIT MUSIC / HYBE.</small></div>
+        <div><small>Disclaimer: Website ini dibuat hanya untuk tugas sekolah. Seluruh hak cipta foto & logo milik BIGHIT
+                MUSIC / HYBE.</small></div>
     </footer>
 
     <script>
         function getEmbedUrl(url) {
             if (!url) return "";
-            
+
             let videoId = "";
-            
+
             try {
                 const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
                 const match = url.match(regExp);
@@ -391,17 +405,17 @@
                 type: "Album",
                 cover: "https://image.weversejapan.com/official/live/cortis/contents/mvalbum/136/Thumbnail/f1393ec2894349e7b985363283fdf6eb.png",
                 mvs: [
-                    { 
+                    {
                         title: "CORTIS(코르티스) 'MONEYMONEYMONEY' Official Visualizer",
                         embedUrl: "https://youtu.be/OhdvNHmJDsw?si=tnUQsF-b9cPygNdR",
                         cover: "https://image.weversejapan.com/official/live/cortis/contents/mvalbum/136/Thumbnail/f1393ec2894349e7b985363283fdf6eb.png"
-                    }, 
-                    { 
-                        title: "CORTIS(코르티스) 'PACK IT UP' Official Visualizer", 
+                    },
+                    {
+                        title: "CORTIS(코르티스) 'PACK IT UP' Official Visualizer",
                         embedUrl: "https://youtu.be/TZWiMoQpr8c",
                         cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/139/Thumbnail/e42bce564bca4357b2dfa737b21bfcd0.png"
                     }
-                ] 
+                ]
             },
             {
                 id: 2,
@@ -410,8 +424,8 @@
                 type: "Single",
                 cover: "https://image.weversejapan.com/official/live/cortis/contents/mvalbum/127/Thumbnail/2648f4789de04e12b76808764ad8a558.png",
                 mvs: [
-                    { 
-                        title: "MOTION (feat. Juicy J)", 
+                    {
+                        title: "MOTION (feat. Juicy J)",
                         embedUrl: "https://youtu.be/h7ITAdTxdxM",
                         cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/128/Thumbnail/3b8f732463884120b723c38524413417.png"
                     }
@@ -520,7 +534,7 @@
 
         function closeModal() {
             mvModal.classList.remove('active');
-            mvListContainer.innerHTML = ''; 
+            mvListContainer.innerHTML = '';
         }
 
         closeBtn.addEventListener('click', closeModal);
@@ -535,4 +549,5 @@
     </script>
 
 </body>
+
 </html>

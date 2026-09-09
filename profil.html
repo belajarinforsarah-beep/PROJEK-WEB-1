@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil - CORTIS</title>
+    <!-- Import Pixel Font dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -19,7 +21,7 @@
             overflow-x: hidden;
         }
 
-        /* HEADER & NAVIGASI UTAMA */
+        /* HEADER & NAVIGASI */
         header {
             text-align: center;
             position: sticky;
@@ -103,7 +105,7 @@
             cursor: pointer;
         }
 
-        /* HERO SECTION (TEKS CORTIS & FOTO BERUBAH) */
+        /* HERO SECTION */
         .hero-section {
             position: relative;
             width: 100%;
@@ -116,28 +118,19 @@
             flex-direction: column;
             padding: 0;
             overflow: hidden;
-            /* Mencegah munculnya scrollbar samping */
         }
 
-        /* TEKS CORTIS RAKSASA - HURUF S PAS TIDAK KEPOTONG */
         .hero-bg-text {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
-
-            /* Ukuran raksasa pas yang dijamin C dan S tidak keluar layar */
             font-size: 23.5vw;
             font-weight: 900;
             line-height: 0.8;
-
-            /* Merapatkan jarak antar huruf agar huruf S ditarik ke dalam */
             letter-spacing: -1vw;
-
-            /* Fade tipis transparan (85% putih solid) */
             color: rgba(255, 255, 255, 0.85);
-
             z-index: 1;
             user-select: none;
             font-family: 'Arial Black', Impact, sans-serif;
@@ -145,7 +138,6 @@
             white-space: nowrap;
             margin: 0;
             padding: 0 2vw;
-            /* Jarak aman di pinggir kiri & kanan */
             box-sizing: border-box;
         }
 
@@ -155,7 +147,6 @@
             width: 90%;
             max-width: 420px;
             height: 250px;
-            /* Memberikan tinggi pasti agar tidak 0px */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -189,10 +180,181 @@
             border-radius: 12px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
             font-size: clamp(13px, 3.5vw, 15px);
-            /* Ukuran teks ikut mengecil di HP */
             line-height: 1.6;
             text-align: justify;
             color: #ffffff;
+        }
+
+        /* SECTION DETAILS (INTERAKTIF TIN BOX) */
+        .details-section {
+            position: relative;
+            width: 100%;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            overflow: hidden;
+        }
+
+        .details-bg-text {
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            font-size: 11vw;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.2vw;
+            color: rgba(255, 255, 255, 0.7);
+            z-index: 1;
+            user-select: none;
+            font-family: 'Arial Black', Impact, sans-serif;
+            text-align: center;
+            white-space: nowrap;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        /* CONTAINER KALENG */
+        .tin-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 480px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* TERTUTUP */
+        .tin-closed-box {
+            width: 100%;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            transition: transform 0.3s ease;
+        }
+
+        .tin-closed-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        /* TERBUKA */
+        .tin-opened-box {
+            display: none;
+            width: 100%;
+            position: relative;
+            border-radius: 20px;
+            animation: openTin 0.5s ease-out forwards;
+        }
+
+        .tin-opened-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes openTin {
+            from {
+                transform: scale(0.9) translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* TULISAN PIXEL "SELECT ONE" DIPERBESAR TAPI TETAP DI DALAM KALENG ATAS */
+        .tin-select-title {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Press Start 2P', monospace;
+            font-size: clamp(20px, 5vw, 28px); /* Ukuran font diperbesar responsif */
+            font-weight: bold;
+            color: #123524;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.9);
+            z-index: 5;
+            pointer-events: none;
+            white-space: nowrap;
+            max-width: 80%; /* Menjaga agar tidak lewat dari batas lebar rongga kaleng */
+            text-align: center;
+        }
+
+        /* OVERLAY POINT 1, 2, 3 PRESISI DI TENGAH BAGIAN BAWAH KALENG */
+        .tin-items-overlay {
+            position: absolute;
+            top: 73%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            z-index: 5;
+        }
+
+        .tin-item-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            padding: 6px 14px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid #236748;
+            font-family: 'Press Start 2P', monospace;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .tin-item-line:hover {
+            transform: scale(1.03);
+            background: #ffffff;
+            border-color: #123524;
+        }
+
+        .tin-num {
+            font-size: 11px;
+            color: #123524;
+            font-weight: bold;
+        }
+
+        .tin-text-preview {
+            font-size: 10.5px;
+            line-height: 1.2;
+            color: #1a4330;
+            white-space: nowrap;
+        }
+
+        /* HINT TEKS UNTUK PENGGUNA */
+        .click-hint {
+            position: relative;
+            z-index: 2;
+            margin-top: 15px;
+            background: rgba(18, 53, 36, 0.9);
+            color: #ceffcd;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            pointer-events: none;
+            letter-spacing: 0.5px;
         }
 
         /* SECTION TITLE MEMBERS FULLSCREEN */
@@ -216,7 +378,7 @@
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
 
-        /* SCRAMBLE GALLERY MEMBERS (DENGAN ROTASI SCROLL) */
+        /* SCRAMBLE GALLERY MEMBERS */
         .scramble-section {
             min-height: 100vh;
             padding: 50px 20px 100px 20px;
@@ -255,7 +417,6 @@
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 12px;
-            transition: filter 0.3s ease;
         }
 
         .scramble-card span {
@@ -271,8 +432,8 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
-        /* DETAIL MEMBER VIEW (MODAL / POPUP HALAMAN DENGAN TOMBOL KEMBALI) */
-        .member-detail-modal {
+        /* MODAL POPUP */
+        .custom-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -288,28 +449,28 @@
             justify-content: center;
         }
 
-        .member-detail-modal.active {
+        .custom-modal.active {
             display: flex;
         }
 
-        .detail-content-box {
+        .modal-box {
             background-color: rgb(51, 120, 83);
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 16px;
-            max-width: 700px;
+            max-width: 600px;
             width: 100%;
             padding: 30px;
             color: aliceblue;
             position: relative;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             text-align: center;
-            animation: fadeIn 0.4s ease;
+            animation: fadeIn 0.3s ease;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(15px);
             }
 
             to {
@@ -318,44 +479,32 @@
             }
         }
 
-        .btn-back {
+        .btn-close-modal {
             display: inline-block;
             background-color: #ceffcd;
             color: #123524;
-            padding: 10px 24px;
+            padding: 8px 20px;
             border-radius: 30px;
-            text-decoration: none;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             cursor: pointer;
-            transition: all 0.2s ease;
             border: none;
-            font-size: 15px;
+            font-size: 14px;
         }
 
-        .btn-back:hover {
-            background-color: #ffffff;
-            transform: translateX(-4px);
-        }
-
-        .detail-content-box img {
-            max-width: 100%;
-            width: 320px;
-            height: auto;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 4px solid white;
-        }
-
-        .photo-description {
+        .modal-body {
             text-align: left;
             background-color: rgb(104, 153, 129);
-
             padding: 20px;
             border-radius: 10px;
-            font-family: Verdana, Geneva, sans-serif;
-            color: aliceblue;
             line-height: 1.6;
+            color: aliceblue;
+        }
+
+        .modal-body h4 {
+            margin-top: 12px;
+            margin-bottom: 4px;
+            color: #e2ffe1;
         }
 
         footer {
@@ -372,7 +521,7 @@
     <header>
         <div class="logo-box">
             <img src="2b64053aa52e4706ac5db831415cc435.png" alt="Logo CORTIS" class="header-logo">
-            <h1 class="header-title">PROFIL</h1>
+            <h1 class="header-title">Profil</h1>
         </div>
         <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">
             <span></span>
@@ -390,6 +539,7 @@
         </nav>
     </header>
 
+    <!-- HERO SECTION -->
     <section class="hero-section">
         <div class="hero-bg-text">CORTIS</div>
 
@@ -409,10 +559,50 @@
         </div>
     </section>
 
+    <!-- SECTION DETAILS (INTERAKTIF TIN BOX) -->
+    <section class="details-section">
+        <div class="details-bg-text">DETAILS</div>
+
+        <div class="tin-wrapper" id="tinWrapper" onclick="toggleTinBox(event)">
+            <!-- KALENG TERTUTUP -->
+            <div class="tin-closed-box" id="tinClosed">
+                <img src="profil/Screenshot 2026-09-10 041756-Photoroom.png" alt="Kaleng Tertutup">
+            </div>
+
+            <!-- KALENG TERBUKA -->
+            <div class="tin-opened-box" id="tinOpened">
+                <img src="profil/Screenshot 2026-09-10 041530-Photoroom.png" alt="Kaleng Terbuka">
+
+                <!-- Tulisan SELECT ONE di Tutup Kaleng Atas -->
+                <div class="tin-select-title">SELECT ONE</div>
+
+                <!-- Posisi Poin di Tengah-tengah Wadah Kaleng Bawah -->
+                <div class="tin-items-overlay">
+                    <div class="tin-item-line" onclick="openDetailModal('info1', event)">
+                        <span class="tin-num">1.</span>
+                        <span class="tin-text-preview">ARTI NAMA CORTIS</span>
+                    </div>
+                    <div class="tin-item-line" onclick="openDetailModal('info2', event)">
+                        <span class="tin-num">2.</span>
+                        <span class="tin-text-preview">KONSEP/KEUNIKAN GRUP</span>
+                    </div>
+                    <div class="tin-item-line" onclick="openDetailModal('info3', event)">
+                        <span class="tin-num">3.</span>
+                        <span class="tin-text-preview">NAMA FANDOM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="click-hint" id="clickHint">Klik kaleng untuk membuka !!</div>
+    </section>
+
+    <!-- SECTION TITLE MEMBERS FULLSCREEN -->
     <div class="full-members-title">
         <h1>MEMBERS</h1>
     </div>
 
+    <!-- SCRAMBLE GALLERY MEMBERS -->
     <section class="scramble-section">
         <div class="scramble-container">
             <div class="scramble-card" data-base-rot="-8" onclick="openMemberDetail('james')">
@@ -447,12 +637,12 @@
         </div>
     </section>
 
-    <div id="memberModal" class="member-detail-modal">
-        <div class="detail-content-box">
-            <button class="btn-back" onclick="closeMemberDetail()">← Kembali</button>
-            <h2 id="modalName">Nama Member</h2>
-            <img id="modalImg" src="" alt="Member Photo">
-            <div id="modalDesc" class="photo-description">
+    <!-- MODAL POPUP (INFORMASI DETAILS & MEMBER) -->
+    <div id="infoModal" class="custom-modal">
+        <div class="modal-box">
+            <button class="btn-close-modal" onclick="closeModal('infoModal')">✕ Tutup</button>
+            <h2 id="modalTitle">Judul</h2>
+            <div id="modalBody" class="modal-body">
             </div>
         </div>
     </div>
@@ -472,86 +662,131 @@
             avatars[currentAvatar].classList.remove('active');
             currentAvatar = (currentAvatar + 1) % avatars.length;
             avatars[currentAvatar].classList.add('active');
-        }, 2000); // Berganti tiap 2 detik
+        }, 2000);
 
-        // 2. EFEK ROTASI SCROLL FOTO SCRAMBLE
+        // 2. LOGIKA TOGGLE BUKA/TUTUP KALENG
+        let isOpen = false;
+        function toggleTinBox(e) {
+            if (e.target.closest('.tin-item-line')) return;
+
+            const closedBox = document.getElementById('tinClosed');
+            const openedBox = document.getElementById('tinOpened');
+            const hint = document.getElementById('clickHint');
+
+            if (!isOpen) {
+                closedBox.style.display = 'none';
+                openedBox.style.display = 'flex';
+                hint.innerText = "Klik area atas kaleng untuk menutup !!";
+                isOpen = true;
+            } else {
+                closedBox.style.display = 'block';
+                openedBox.style.display = 'none';
+                hint.innerText = "Klik kaleng untuk membuka !!";
+                isOpen = false;
+            }
+        }
+
+        // 3. DATA DETAILS UNTUK POIN 1, 2, 3
+        const detailsData = {
+            info1: {
+                title: "1. ARTI NAMA CORTIS",
+                desc: `<p><strong>Makna Singkatan:</strong> CORTIS merupakan akronim dari frasa <em>"COLOR OUTSIDE THE LINES"</em>.</p>
+                       <p><strong>Filosofi:</strong> Nama ini menggambarkan semangat anak muda yang berani berpikir bebas, mengekspresikan diri tanpa batas, serta mendobrak norma, aturan, dan standar lama yang kaku.</p>`
+            },
+            info2: {
+                title: "2. KONSEP/KEUNIKAN GRUP",
+                desc: `<p><strong>Self-Driven Creatives (Tanpa Posisi Kaku):</strong> CORTIS tidak menerapkan pembagian posisi tradisional yang kaku (seperti main vocal atau lead dancer tetap). Semua anggota bertindak sebagai ko-kreator.</p>
+                       <p><strong>Keterlibatan Langsung:</strong> Para anggota terlibat penuh secara mandiri (hands-on) dalam seluruh proses kreatif — mulai dari penulisan lirik, komposisi lagu, pembuatan koreografi, hingga konsep visual dan ide konten video.</p>
+                       <p><strong>Gaya & Narasi Musik:</strong> Mengusung genre yang segar (berkelindan antara R&B, pop, dan hip-hop) dengan narasi cerita yang berfokus pada kebebasan eksplorasi, keberanian, dan realita kehidupan generasi muda saat ini.</p>`
+            },
+            info3: {
+                title: "3. NAMA FANDOM",
+                desc: `<p><strong>Nama Fandom Resmi:</strong> COER (코어)</p>
+                       <p><strong>Arti & Makna:</strong></p>
+                       <ul>
+                           <li>Penamaan ini diambil dari penggabungan kata "COR" (dari CORTIS) dan sufiks "~ER" (yang merujuk pada orang/penggemar yang menjadi bagian dari mereka).</li>
+                           <li>Secara pelafalan, kata ini terdengar seperti kata dalam bahasa Inggris "CORE", yang melambangkan bahwa penggemar adalah inti, pusat, dan fondasi terpenting bagi perjalanan CORTIS.</li>
+                       </ul>`
+            }
+        };
+
+        function openDetailModal(key, e) {
+            e.stopPropagation();
+            const data = detailsData[key];
+            if (data) {
+                document.getElementById('modalTitle').innerText = data.title;
+                document.getElementById('modalBody').innerHTML = data.desc;
+                document.getElementById('infoModal').classList.add('active');
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // 4. EFEK ROTASI SCROLL FOTO SCRAMBLE
         const scrambleCards = document.querySelectorAll('.scramble-card');
-
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY;
             scrambleCards.forEach((card) => {
                 const baseRot = parseFloat(card.getAttribute('data-base-rot'));
-                // Rotasi sedikit berubah tergantung posisi scroll
                 const dynamicRot = baseRot + Math.sin(scrollY * 0.005) * 6;
                 card.style.transform = `rotate(${dynamicRot}deg)`;
             });
         });
-
-        // Trigger rotasi awal
         window.dispatchEvent(new Event('scroll'));
 
-        // 3. DATA PROFILE UNTUK DETAIL MODAL
+        // 5. DATA PROFILE MEMBER
         const membersData = {
             james: {
                 name: "JAMES (제임스)",
-                img: "https://image.weversejapan.com/official/live/cortis/contents/profile/3/4b3c0911616f4c1280bf1602197ac417.jpg",
                 desc: `<ul>
                     <li>Tanggal Lahir: 14 Oktober 2005 (Umur 20 tahun)</li>
                     <li>Kewarganegaraan / Asal: Hong Kong (Keturunan Thailand-Taiwan)</li>
-                    <li>Latar Belakang & Track Record: Menguasai 5 bahasa. Sebelum debut, ia merupakan trainee BIGHIT MUSIC yang memfokuskan keahliannya pada tarian dan koreografi. James terlibat langsung dalam pembuatan koreografi untuk lagu debut CORTIS serta berpartisipasi menciptakan koreografi untuk grup HYBE lainnya (seperti lagu viral "Magnetic" dari ILLIT).</li>
+                    <li>Latar Belakang: Menguasai 5 bahasa. Berpartisipasi menciptakan koreografi untuk lagu debut CORTIS dan lagu viral "Magnetic" dari ILLIT.</li>
                 </ul>`
             },
             keonho: {
                 name: "KEONHO (건호)",
-                img: "https://image.weversejapan.com/official/live/cortis/contents/profile/3/7b4d76643163474cb573714bc0042073.jpg",
                 desc: `<ul>
                     <li>Lahir: 14 Februari 2009 (Umur 17 tahun)</li>
                     <li>Kewarganegaraan / Asal: Korea Selatan</li>
-                    <li>Latar Belakang & Track Record: Merupakan anggota paling muda (Maknae). Keonho dikenal sebagai all-rounder yang serba bisa. Ia ikut serta menyusun lirik dan melodi di beberapa lagu debut CORTIS, termasuk "What You Want" dan "GO!".</li>
+                    <li>Latar Belakang: Anggota paling muda (Maknae) dan seorang all-rounder. Ikut menyusun lirik dan melodi di lagu "What You Want" serta "GO!".</li>
                 </ul>`
             },
             martin: {
                 name: "MARTIN (마틴)",
-                img: "https://image.weversejapan.com/official/live/cortis/contents/profile/3/6dec4dd5bdf3434aaa1c30990e2fe292.jpg",
                 desc: `<ul>
                     <li>Tanggal Lahir: 20 Maret 2008 (Umur 18 tahun)</li>
                     <li>Kewarganegaraan / Asal: Kanada - Korea Selatan</li>
-                    <li>Latar Belakang & Track Record: Bertindak sebagai Leader. Martin memiliki rekam jejak yang sangat kuat di bidang songwriting dan produksi musik sejak masa trainee. Ia telah berkontribusi sebagai produser/komponis dalam lagu-lagu hits artis HYBE lain seperti TOMORROW X TOGETHER ("Deja Vu"), LE SSERAFIM ("Pierrot"), dan ILLIT ("Magnetic").</li>
+                    <li>Latar Belakang: Leader CORTIS. Berkontribusi sebagai produser/komponis dalam lagu hits HYBE seperti TXT ("Deja Vu") dan LE SSERAFIM ("Pierrot").</li>
                 </ul>`
             },
             juhoon: {
                 name: "JUHOON (주훈)",
-                img: "https://image.weversejapan.com/official/live/cortis/contents/profile/3/7da49e46dfd74b2081982ae96f12dc2a.jpg",
                 desc: `<ul>
                     <li>Tanggal Lahir: 3 Januari 2008 (Umur 18 tahun)</li>
                     <li>Kewarganegaraan / Asal: Korea Selatan</li>
-                    <li>Latar Belakang & Track Record: Mengawali kariernya di dunia hiburan sebagai model cilik dan sempat aktif sebagai atlet basket remaja. Juhoon berpartisipasi menulis lirik untuk sebagian besar trek dalam album COLOR OUTSIDE THE LINES seperti "GO!", "FaSHioN", dan "JoyRide".</li>
+                    <li>Latar Belakang: Mantan model cilik dan atlet basket. Berpartisipasi menulis lirik lagu "GO!", "FaSHioN", dan "JoyRide".</li>
                 </ul>`
             },
             seonghyeon: {
                 name: "SEONGHYEON (성현)",
-                img: "https://image.weversejapan.com/official/live/cortis/contents/profile/3/44eef26ad19e47ea898da0f88e15abef.jpg",
                 desc: `<ul>
                     <li>Tanggal Lahir: 13 Januari 2009 (Umur 17 tahun)</li>
                     <li>Kewarganegaraan / Asal: Korea Selatan</li>
-                    <li>Latar Belakang & Track Record: Dikenal sebagai salah satu pemikir kreatif dalam grup. Seonghyeon aktif terlibat dalam memberikan ide-ide visual, gaya estetika (fashion), serta penulisan lagu.</li>
+                    <li>Latar Belakang: Pemikir kreatif grup yang aktif menyumbang ide visual, estetika fashion, dan penulisan lagu.</li>
                 </ul>`
             }
         };
 
-        // 4. FUNGSIONALITAS MEMBUKA/MENUTUP DETAIL MEMBER
         function openMemberDetail(id) {
             const data = membersData[id];
             if (data) {
-                document.getElementById('modalName').innerText = data.name;
-                document.getElementById('modalImg').src = data.img;
-                document.getElementById('modalDesc').innerHTML = data.desc;
-                document.getElementById('memberModal').classList.add('active');
+                document.getElementById('modalTitle').innerText = data.name;
+                document.getElementById('modalBody').innerHTML = data.desc;
+                document.getElementById('infoModal').classList.add('active');
             }
-        }
-
-        function closeMemberDetail() {
-            document.getElementById('memberModal').classList.remove('active');
         }
     </script>
 </body>

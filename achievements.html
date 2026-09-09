@@ -20,17 +20,112 @@
             background-color: #0b1510;
             color: #ffffff;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
             overflow-x: hidden;
         }
 
+        /* HEADER & NAVIGASI (FULL WIDTH) */
+        header {
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            /* Warna transparan dengan efek blur di belakangnya */
+            background: rgba(35, 103, 72, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        .header-logo:hover {
+            transform: none;
+            filter: none;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+            color: aliceblue;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Bentuk tombol garis tiga */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* Sembunyikan menu bawaan */
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            padding: 5px;
+            border-radius: 8px;
+            flex-direction: column;
+            background: rgba(18, 53, 36, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            justify-content: space-between;
+        }
+
+        /* Munculkan menu pas diklik */
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            font-family: georgia;
+            display: block;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            cursor: pointer;
+        }
+
+        /* CONTAINER KONTEN UTAMA */
         .container {
             width: 100%;
             max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
             text-align: center;
         }
 
@@ -110,16 +205,12 @@
         }
 
         .year-title {
-            /* Ganti 'p' sesuai tag HTML teks tersebut, misal: .letter-card h3 atau .letter-card span */
             font-family: 'Caveat', cursive;
             font-size: 40px !important;
-            /* Font tulisan tangan biasanya perlu ukuran agak besar agar mudah dibaca */
             font-weight: 700;
             color: #2e2e2e;
-            /* Warna tulisan seperti tinta */
             margin-bottom: 5px;
             text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
-            /* Efek halus seperti bekas goresan tinta */
         }
 
         /* Kartu Pilihan (2025 & 2026) yang Keluar dari Amplop */
@@ -130,13 +221,11 @@
             transform: translateX(-50%);
             width: 250px;
             height: 200px;
-
             padding: 25px 20px 20px 20px;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 2;
             opacity: 0;
             pointer-events: none;
-
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -149,19 +238,13 @@
             position: absolute;
             top: 50%;
             left: 50%;
-
-            /* Atur ukuran gambar di sini (ubah misal ke 360px x 300px) */
             width: 560px;
             height: 500px;
-
             transform: translate(-50%, -50%);
-            /* Menjaga posisi tetap di tengah */
             background: url('popup memes/download (1)-Photoroom.png') no-repeat center center;
             background-size: contain;
             z-index: -1;
-            /* Berada di belakang tombol */
         }
-
 
         /* Saat Amplop Terbuka, Kartu Naik Ke Atas */
         .envelope-wrapper.open .letter-card {
@@ -174,7 +257,6 @@
             font-size: 0.95rem;
             font-weight: bold;
             color: #2b2b2b;
-            /* Warna gelap agar terbaca jelas di atas kertas */
             margin-bottom: 2px;
         }
 
@@ -222,7 +304,6 @@
         --------------------------------------------------- */
         .year-view {
             display: none;
-            /* Sembunyi secara default */
             text-align: left;
         }
 
@@ -357,6 +438,26 @@
 </head>
 
 <body>
+    <header>
+        <div class="logo-box">
+            <img src="2b64053aa52e4706ac5db831415cc435.png" alt="Logo CORTIS" class="header-logo">
+            <h1 class="header-title">Song Lyrics & Fanchants</h1>
+        </div>
+        <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu" id="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="profil.html" class="nav-link">Profil</a>
+            <a href="foto.html" class="nav-link">Photos</a>
+            <a href="achievements.html" class="nav-link">Achievements</a>
+            <a href="album.html" class="nav-link">Discography/Album</a>
+            <a href="musicvideo.html" class="nav-link">Music Video</a>
+            <a href="songlyric.html" class="nav-link">Song Lyric & Fanchant</a>
+        </nav>
+    </header>
 
     <div class="container">
 
@@ -391,8 +492,7 @@
                         <h3 class="award-title">Rookie of the Year – Singer</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -402,8 +502,7 @@
                         <h3 class="award-title">Best Performance</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/⋆_˚-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/⋆_˚-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -413,8 +512,7 @@
                         <h3 class="award-title">Artist of the Year</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/james cortis 🔛🔝-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/james cortis 🔛🔝-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -424,8 +522,7 @@
                         <h3 class="award-title">Best New Artist</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/juhoon (1)-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/juhoon (1)-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -435,8 +532,7 @@
                         <h3 class="award-title">Fans' Choice Top 10 – Male</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/sean (2)-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/sean (2)-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -446,8 +542,7 @@
                         <h3 class="award-title">Song of the Year</h3>
                     </div>
                     <div class="award-work">Track: "Go!"</div>
-                    <img src="popup memes/sean (1)-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/sean (1)-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -457,8 +552,7 @@
                         <h3 class="award-title">Best Choreography</h3>
                     </div>
                     <div class="award-work">Track: "Go!"</div>
-                    <img src="popup memes/Martin cortis (1)-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/Martin cortis (1)-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -468,8 +562,7 @@
                         <h3 class="award-title">Global Rookie Award</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/james-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/james-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
             </div>
         </div>
@@ -488,8 +581,7 @@
                         <h3 class="award-title">Dreams Silver Label</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -499,8 +591,7 @@
                         <h3 class="award-title">Rookie Artist of the Year</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/Juhoon (2)-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/Juhoon (2)-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -510,8 +601,7 @@
                         <h3 class="award-title">Most Popular Artist – Male</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/⋆_˚-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/⋆_˚-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -521,8 +611,7 @@
                         <h3 class="award-title">Best K-pop New Artist</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/Martin cortis (1)-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/Martin cortis (1)-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -532,8 +621,7 @@
                         <h3 class="award-title">Favorite TikTok Dance</h3>
                     </div>
                     <div class="award-work">Track: "Go!"</div>
-                    <img src="popup memes/james cortis 🔛🔝-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/james cortis 🔛🔝-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -543,8 +631,7 @@
                         <h3 class="award-title">Record of the Year</h3>
                     </div>
                     <div class="award-work">Track: "RedRed"</div>
-                    <img src="popup memes/sean (1)-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/sean (1)-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -554,8 +641,7 @@
                         <h3 class="award-title">Ultimatte 12</h3>
                     </div>
                     <div class="award-work">Track: "RedRed"</div>
-                    <img src="popup memes/keonho-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/keonho-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -565,8 +651,7 @@
                         <h3 class="award-title">The Best Singer Award</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -576,8 +661,7 @@
                         <h3 class="award-title">Male Idol – Rookie (Indonesia)</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/james-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/james-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -587,8 +671,7 @@
                         <h3 class="award-title">Male Idol – Rookie (Vietnam)</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/sean (2)-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/sean (2)-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -598,8 +681,7 @@
                         <h3 class="award-title">Male Idol – Rookie</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/james cortis 🔛🔝-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/james cortis 🔛🔝-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -609,8 +691,7 @@
                         <h3 class="award-title">Best New Artist</h3>
                     </div>
                     <div class="award-work">Nominee: Cortis</div>
-                    <img src="popup memes/juhoon (1)-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/juhoon (1)-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
 
                 <div class="award-card" data-aos="fade-up">
@@ -620,8 +701,7 @@
                         <h3 class="award-title">Best K-pop</h3>
                     </div>
                     <div class="award-work">Track: "RedRed"</div>
-                    <img src="popup memes/Martin cortis (1)-Photoroom.png" alt="Popup"
-                        class="card-popup-img">
+                    <img src="popup memes/Martin cortis (1)-Photoroom.png" alt="Popup" class="card-popup-img">
                 </div>
             </div>
         </div>
@@ -637,7 +717,6 @@
 
         // Buka / Tutup Amplop Surat
         function toggleEnvelope(event) {
-            // Biarkan tombol di dalam kartu berfungsi tanpa menutup amplop
             if (event.target.tagName === 'BUTTON') return;
 
             const envelope = document.getElementById('envelope');
@@ -653,7 +732,6 @@
             const selectedPage = document.getElementById(pageId);
             selectedPage.style.display = 'block';
 
-            // Refresh animasi AOS setelah tampilan berganti
             setTimeout(() => { AOS.refresh(); }, 100);
         }
 
@@ -663,7 +741,6 @@
             document.getElementById('view-2026').style.display = 'none';
             document.getElementById('menu-view').style.display = 'flex';
 
-            // Biarkan amplop tetap terbuka saat kembali
             document.getElementById('envelope').classList.add('open');
         }
     </script>
