@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORTIS Achievements</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b1510;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: #42b966;
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            color: #aaaaaa;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        /* ---------------------------------------------------
+           Halaman Utama / Menu Amplop Interactive
+        --------------------------------------------------- */
+        #menu-view {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+
+        /* Container Amplop 3D */
+        .envelope-wrapper {
+            position: relative;
+            width: 280px;
+            height: 180px;
+            background: #1e3a2b;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            margin: 40px auto;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope-wrapper:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Penutup Amplop (Flap) */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 140px solid transparent;
+            border-right: 140px solid transparent;
+            border-top: 100px solid #284e3a;
+            transform-origin: top;
+            transition: transform 0.5s ease;
+            z-index: 4;
+        }
+
+        /* Amplop saat Terbuka */
+        .envelope-wrapper.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        /* Badan Amplop Samping & Bawah */
+        .envelope-pocket {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 140px solid #193224;
+            border-right: 140px solid #193224;
+            border-bottom: 95px solid #14281d;
+            border-radius: 0 0 12px 12px;
+            z-index: 3;
+        }
+
+        .year-title {
+            /* Ganti 'p' sesuai tag HTML teks tersebut, misal: .letter-card h3 atau .letter-card span */
+            font-family: 'Caveat', cursive;
+            font-size: 40px !important;
+            /* Font tulisan tangan biasanya perlu ukuran agak besar agar mudah dibaca */
+            font-weight: 700;
+            color: #2e2e2e;
+            /* Warna tulisan seperti tinta */
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+            /* Efek halus seperti bekas goresan tinta */
+        }
+
+        /* Kartu Pilihan (2025 & 2026) yang Keluar dari Amplop */
+        .letter-card {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            height: 200px;
+
+            padding: 25px 20px 20px 20px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 2;
+            opacity: 0;
+            pointer-events: none;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .letter-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            /* Atur ukuran gambar di sini (ubah misal ke 360px x 300px) */
+            width: 560px;
+            height: 500px;
+
+            transform: translate(-50%, -50%);
+            /* Menjaga posisi tetap di tengah */
+            background: url('popup memes/download (1)-Photoroom.png') no-repeat center center;
+            background-size: contain;
+            z-index: -1;
+            /* Berada di belakang tombol */
+        }
+
+
+        /* Saat Amplop Terbuka, Kartu Naik Ke Atas */
+        .envelope-wrapper.open .letter-card {
+            bottom: 120px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .letter-card .year-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #2b2b2b;
+            /* Warna gelap agar terbaca jelas di atas kertas */
+            margin-bottom: 2px;
+        }
+
+        .year-btn {
+            background: #42b966;
+            color: #ffffff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: background 0.2s, transform 0.2s;
+            width: 80%;
+            text-align: center;
+        }
+
+        .year-btn:hover {
+            background: #349853;
+            transform: scale(1.05);
+        }
+
+        .click-hint {
+            color: #42b966;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* ---------------------------------------------------
+           Halaman List Awards (2025 & 2026)
+        --------------------------------------------------- */
+        .year-view {
+            display: none;
+            /* Sembunyi secara default */
+            text-align: left;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #42b966;
+            color: #0b1510;
+        }
+
+        /* Grid Kartu Achievement */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .award-card {
+            background: rgba(15, 31, 23, 0.45);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+
+        .award-card:hover {
+            background: rgba(25, 55, 40, 0.85);
+            border-color: #42b966;
+            box-shadow: 0 10px 25px rgba(66, 185, 102, 0.2);
+            transform: translateY(-6px);
+        }
+
+        .award-event {
+            font-size: 0.85rem;
+            color: #888888;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .award-title {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .award-work {
+            font-size: 0.9rem;
+            color: #aaaaaa;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Gambar Meme Pop-up di Pojok Kanan Bawah */
+        .card-popup-img {
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            width: 85px;
+            height: 85px;
+            object-fit: contain;
+            opacity: 0;
+            transform: scale(0.5) rotate(-15deg);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+        }
+
+        .award-card:hover .card-popup-img {
+            opacity: 0.9;
+            right: 12px;
+            bottom: 12px;
+            transform: scale(1) rotate(0deg);
+        }
+
+        /* Badge Status */
+        .badge {
+            align-self: flex-start;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .badge-won {
+            background-color: rgba(66, 185, 102, 0.25);
+            color: #42b966;
+            border: 1px solid #42b966;
+        }
+
+        .badge-nomination {
+            background-color: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            border: 1px solid #ffc107;
+        }
+
+        .badge-pending {
+            background-color: rgba(13, 202, 240, 0.2);
+            color: #0dcaf0;
+            border: 1px solid #0dcaf0;
+        }
+
+        .badge-longlist {
+            background-color: rgba(153, 102, 255, 0.2);
+            color: #b388ff;
+            border: 1px solid #b388ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="menu-view">
+            <h1 class="page-title">CORTIS Achievements</h1>
+            <p class="page-subtitle">Klik amplop di bawah untuk memilih tahun penghargaan</p>
+
+            <div class="envelope-wrapper" id="envelope" onclick="toggleEnvelope(event)">
+                <div class="envelope-flap"></div>
+                <div class="envelope-pocket"></div>
+                <div class="letter-card">
+                    <span class="year-title">Pilih Tahun:</span>
+                    <button class="year-btn" onclick="openYearPage('view-2025')">🏆 Tahun 2025</button>
+                    <button class="year-btn" onclick="openYearPage('view-2026')">🏆 Tahun 2026</button>
+                </div>
+            </div>
+
+            <div class="click-hint">✉️ Klik amplop untuk membuka</div>
+        </div>
+
+
+        <div id="view-2025" class="year-view">
+            <button class="back-btn" onclick="showMenu()">← Kembali ke Pilih Tahun</button>
+            <h2 class="page-title">Achievements • 2025</h2>
+            <p class="page-subtitle">Daftar penghargaan dan nominasi CORTIS pada tahun 2025.</p>
+
+            <div class="achievements-grid">
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">Asia Artist Awards • 2025</div>
+                        <h3 class="award-title">Rookie of the Year – Singer</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">Asia Artist Awards • 2025</div>
+                        <h3 class="award-title">Best Performance</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-longlist">LONGLISTED</span>
+                        <div class="award-event">MAMA Awards • 2025</div>
+                        <h3 class="award-title">Artist of the Year</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">MAMA Awards • 2025</div>
+                        <h3 class="award-title">Best New Artist</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-nomination">NOMINATED</span>
+                        <div class="award-event">MAMA Awards • 2025</div>
+                        <h3 class="award-title">Fans' Choice Top 10 – Male</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-longlist">LONGLISTED</span>
+                        <div class="award-event">MAMA Awards • 2025</div>
+                        <h3 class="award-title">Song of the Year</h3>
+                    </div>
+                    <div class="award-work">Track: "Go!"</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-nomination">NOMINATED</span>
+                        <div class="award-event">MAMA Awards • 2025</div>
+                        <h3 class="award-title">Best Choreography</h3>
+                    </div>
+                    <div class="award-work">Track: "Go!"</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">TikTok Awards Korea • 2025</div>
+                        <h3 class="award-title">Global Rookie Award</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+            </div>
+        </div>
+
+
+        <div id="view-2026" class="year-view">
+            <button class="back-btn" onclick="showMenu()">← Kembali ke Pilih Tahun</button>
+            <h2 class="page-title">Achievements • 2026</h2>
+            <p class="page-subtitle">Daftar penghargaan dan nominasi CORTIS pada tahun 2026.</p>
+
+            <div class="achievements-grid">
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">D Awards • 2026</div>
+                        <h3 class="award-title">Dreams Silver Label</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">Golden Disc Awards • 2026</div>
+                        <h3 class="award-title">Rookie Artist of the Year</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-nomination">NOMINATED</span>
+                        <div class="award-event">Golden Disc Awards • 2026</div>
+                        <h3 class="award-title">Most Popular Artist – Male</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">iHeartRadio Music Awards • 2026</div>
+                        <h3 class="award-title">Best K-pop New Artist</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-nomination">NOMINATED</span>
+                        <div class="award-event">iHeartRadio Music Awards • 2026</div>
+                        <h3 class="award-title">Favorite TikTok Dance</h3>
+                    </div>
+                    <div class="award-work">Track: "Go!"</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">KM Chart Awards • 2026</div>
+                        <h3 class="award-title">Record of the Year</h3>
+                    </div>
+                    <div class="award-work">Track: "RedRed"</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">KM Chart Awards • 2026</div>
+                        <h3 class="award-title">Ultimatte 12</h3>
+                    </div>
+                    <div class="award-work">Track: "RedRed"</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">Korea Broadcasting Awards • 2026</div>
+                        <h3 class="award-title">The Best Singer Award</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">Korea First Brand Awards • 2026</div>
+                        <h3 class="award-title">Male Idol – Rookie (Indonesia)</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">Korea First Brand Awards • 2026</div>
+                        <h3 class="award-title">Male Idol – Rookie (Vietnam)</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-won">WON</span>
+                        <div class="award-event">Korea First Brand Awards • 2026</div>
+                        <h3 class="award-title">Male Idol – Rookie</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-pending">PENDING</span>
+                        <div class="award-event">MTV Video Music Awards • 2026</div>
+                        <h3 class="award-title">Best New Artist</h3>
+                    </div>
+                    <div class="award-work">Nominee: Cortis</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+
+                <div class="award-card" data-aos="fade-up">
+                    <div>
+                        <span class="badge badge-pending">PENDING</span>
+                        <div class="award-event">MTV Video Music Awards • 2026</div>
+                        <h3 class="award-title">Best K-pop</h3>
+                    </div>
+                    <div class="award-work">Track: "RedRed"</div>
+                    <img src="popup memes/d10d1dd53bc44947fed1fbd787a1684a-Photoroom.png" alt="Popup"
+                        class="card-popup-img">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Buka / Tutup Amplop Surat
+        function toggleEnvelope(event) {
+            // Biarkan tombol di dalam kartu berfungsi tanpa menutup amplop
+            if (event.target.tagName === 'BUTTON') return;
+
+            const envelope = document.getElementById('envelope');
+            envelope.classList.toggle('open');
+        }
+
+        // Buka Halaman Tahun
+        function openYearPage(pageId) {
+            document.getElementById('menu-view').style.display = 'none';
+            document.getElementById('view-2025').style.display = 'none';
+            document.getElementById('view-2026').style.display = 'none';
+
+            const selectedPage = document.getElementById(pageId);
+            selectedPage.style.display = 'block';
+
+            // Refresh animasi AOS setelah tampilan berganti
+            setTimeout(() => { AOS.refresh(); }, 100);
+        }
+
+        // Kembali ke Menu Amplop Utama
+        function showMenu() {
+            document.getElementById('view-2025').style.display = 'none';
+            document.getElementById('view-2026').style.display = 'none';
+            document.getElementById('menu-view').style.display = 'flex';
+
+            // Biarkan amplop tetap terbuka saat kembali
+            document.getElementById('envelope').classList.add('open');
+        }
+    </script>
+</body>
+
+</html>
