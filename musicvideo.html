@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORTIS — Albums & Music Videos</title>
+    <title>Music Video - CORTIS</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -16,69 +16,55 @@
             background-color: #0b0c10;
             color: #ffffff;
             font-family: 'Space Grotesk', sans-serif;
-            padding: 2rem 5%;
+            padding: 2rem 5% 6rem 5%;
         }
 
-        /* nav a {
-            color: #888;
-            text-decoration: none;
-            margin-left: 2rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover, nav a.active {
-            color: #fff;
-        } */
-   /* Bentuk tombol garis tiga */
         .hamburger {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            width: fit-content;
+            margin-bottom: 1.5rem;
         }
         .hamburger span {
-        width: 25px;
-        height: 3px;
-        background-color: white;
-        border-radius: 2px;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
         }
 
-        /* Sembunyikan menu bawaan */
         .nav-menu {
-        display: none; 
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background-color: #3a9167;
-        padding: 5px;
-        border-radius: 8px;
-        flex-direction: column;
-        /* Warna transparan dengan efek blur di belakangnya */
-                background: rgba(65, 182, 129, 0.65);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                justify-content: space-between;
+            display: none; 
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            flex-direction: column;
+            background: rgba(18, 53, 36, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-align: center;
+            z-index: 9999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
-        /* Munculkan menu pas diklik */
         .nav-menu.active {
-        display: flex;
+            display: flex;
         }
 
         .nav-link {
-        color: white;
-        text-decoration: none;
-        padding: 8px 15px;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            font-size: 0.9rem;
         }
 
         .nav-link:hover {
-        text-decoration: underline;
-        text-underline-offset: 4px;
-        cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            cursor: pointer;
         }
 
         .page-title {
@@ -88,14 +74,12 @@
             margin-bottom: 2rem;
         }
 
-        /* Album Grid Layout */
         .album-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
         }
 
-        /* Album Card Item */
         .album-card {
             background-color: #12141a;
             border-radius: 12px;
@@ -107,7 +91,6 @@
             flex-direction: column;
         }
 
-        /* Efek Hover: Membesar + Miring */
         .album-card:hover {
             transform: translateY(-6px) scale(1.04) rotate(2deg);
             border-color: #00ff66;
@@ -118,7 +101,7 @@
         .cover-container {
             position: relative;
             width: 100%;
-            padding-top: 100%; /* Ratio 1:1 Square Album Cover */
+            padding-top: 100%;
             background-color: #1f2430;
             overflow: hidden;
         }
@@ -164,7 +147,6 @@
             margin-top: 0.3rem;
         }
 
-        /* Modal Overlay (Tampilan saat Album Dipencet) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -229,7 +211,6 @@
             text-transform: uppercase;
         }
 
-        /* Video List Inside Modal */
         .mv-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -241,13 +222,20 @@
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #2a2f3d;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .mv-card:hover {
+            border-color: #00ff66;
+            transform: translateY(-3px);
         }
 
         .mv-thumbnail {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 */
+            padding-top: 56.25%;
             background-color: #000;
+            overflow: hidden;
         }
 
         .mv-thumbnail iframe,
@@ -261,6 +249,46 @@
             border: none;
         }
 
+        /* Tombol Play Overlay di Atas Gambar */
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .play-overlay:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .play-btn-icon {
+            background: #00ff66;
+            color: #000;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 3px;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.6);
+            transition: transform 0.2s ease;
+        }
+
+        .play-overlay:hover .play-btn-icon {
+            transform: scale(1.15);
+        }
+
         .mv-info {
             padding: 0.8rem;
         }
@@ -271,7 +299,6 @@
             color: #fff;
         }
 
-        /* Style Scrollbar Modal */
         .modal-content::-webkit-scrollbar {
             width: 8px;
         }
@@ -284,39 +311,42 @@
         }
 
         footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid #222;
+            background-color: rgb(16, 48, 33);
             text-align: center;
-            color: #555;
-            font-size: 0.85rem;
+            color: rgb(205, 252, 252);
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            position: fixed;
+            padding: 15px 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
-<div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">
+
+    <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">
         <span></span>
         <span></span>
         <span></span>
-        </div>
+    </div>
+
     <nav class="nav-menu" id="nav-menu">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="profil.html" class="nav-link">Profil</a>
-    <a href="foto.html" class="nav-link">Photos</a>
-    <a href="achievements.html" class="nav-link">Achievements</a>
-    <a href="album.html" class="nav-link">Discography/Album</a>
-    <a href="musicvideo.html" class="nav-link">Music Video</a>
-    <a href="songlyric.html" class="nav-link">Song Lyric & Fanchant</a>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="profil.html" class="nav-link">Profil</a>
+        <a href="foto.html" class="nav-link">Photos</a>
+        <a href="achievements.html" class="nav-link">Achievements</a>
+        <a href="album.html" class="nav-link">Discography/Album</a>
+        <a href="musicvideo.html" class="nav-link">Music Video</a>
+        <a href="songlyric.html" class="nav-link">Song Lyric & Fanchant</a>
     </nav>
 
     <h1 class="page-title">Discography & Music Videos</h1>
 
-    <!-- Album Grid Container -->
-    <main class="album-grid" id="albumGrid">
-        <!-- Generatated via JS -->
-    </main>
+    <main class="album-grid" id="albumGrid"></main>
 
-    <!-- Modal Popup untuk List MV -->
     <div class="modal-overlay" id="mvModal">
         <div class="modal-content">
             <button class="close-btn" id="closeBtn">&times;</button>
@@ -324,74 +354,103 @@
                 <h2 class="modal-album-title" id="modalAlbumTitle">Album Title</h2>
                 <p style="color: #888; margin-top: 0.3rem;" id="modalAlbumSubtitle">List Music Video</p>
             </div>
-            <div class="mv-list" id="mvListContainer">
-                <!-- MV Cards di-generate oleh JavaScript -->
-            </div>
+            <div class="mv-list" id="mvListContainer"></div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 CORTIS / BIGHIT MUSIC. All rights reserved.</p>
+        <div>&copy; 2026 Proyek Tugas HTML Sekolah - Dibuat oleh Nurin & Sarah.</div>
+        <div><small>Disclaimer: Website ini dibuat hanya untuk tugas sekolah. Seluruh hak cipta foto & logo milik BIGHIT MUSIC / HYBE.</small></div>
     </footer>
 
     <script>
-        // Data Album beserta List Music Video didalamnya
+        function getEmbedUrl(url) {
+            if (!url) return "";
+            
+            let videoId = "";
+            
+            try {
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                const match = url.match(regExp);
+
+                if (match && match[2].length === 11) {
+                    videoId = match[2];
+                }
+            } catch (e) {
+                console.error("Error parsing YouTube URL", e);
+            }
+
+            return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
+        }
+
         const albumsData = [
             {
                 id: 1,
-                title: "GREENGREEN",
-                year: "2026",
-                type: "EP Album",
-                cover: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&w=800&q=80",
+                title: "[GREENGREEN_playextended]",
+                year: "2026.08.24",
+                type: "Album",
+                cover: "https://image.weversejapan.com/official/live/cortis/contents/mvalbum/136/Thumbnail/f1393ec2894349e7b985363283fdf6eb.png",
                 mvs: [
-                    { title: "TNT (Concept Film)", embedUrl: "https://www.youtube.com/embed/XgmdslsEJ1M" },
-                    { title: "GREENGREEN Title MV", embedUrl: "https://www.youtube.com/embed/6MYB61hUaFg" }
-                ] // 2 Videos
+                    { 
+                        title: "CORTIS(코르티스) 'MONEYMONEYMONEY' Official Visualizer",
+                        embedUrl: "https://youtu.be/OhdvNHmJDsw?si=tnUQsF-b9cPygNdR",
+                        cover: "https://image.weversejapan.com/official/live/cortis/contents/mvalbum/136/Thumbnail/f1393ec2894349e7b985363283fdf6eb.png"
+                    }, 
+                    { 
+                        title: "CORTIS(코르티스) 'PACK IT UP' Official Visualizer", 
+                        embedUrl: "https://youtu.be/TZWiMoQpr8c",
+                        cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/139/Thumbnail/e42bce564bca4357b2dfa737b21bfcd0.png"
+                    }
+                ] 
             },
             {
                 id: 2,
-                title: "WHAT YOU WANT",
-                year: "2025",
-                type: "Debut Single",
-                cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80",
+                title: "MOTION (feat. Juicy J)",
+                year: "2026.07.31",
+                type: "Single",
+                cover: "https://image.weversejapan.com/official/live/cortis/contents/mvalbum/127/Thumbnail/2648f4789de04e12b76808764ad8a558.png",
                 mvs: [
-                    { title: "What You Want Official MV", embedUrl: "https://www.youtube.com/embed/6MYB61hUaFg" }
-                ] // 1 Video
+                    { 
+                        title: "MOTION (feat. Juicy J)", 
+                        embedUrl: "https://youtu.be/h7ITAdTxdxM",
+                        cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/128/Thumbnail/3b8f732463884120b723c38524413417.png"
+                    }
+                ]
             },
             {
                 id: 3,
-                title: "COLOR OUTSIDE THE LINES",
-                year: "2025",
-                type: "Full Album",
-                cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80",
+                title: "[GREENGREEN]",
+                year: "2026.05.04",
+                type: "The 2nd EP",
+                cover: "https://image.weversejapan.com/official/live/cortis/contents/mvalbum/123/Thumbnail/633ffb28e83f48449174c4c43f2704da.png",
                 mvs: [
-                    { title: "GO! Official MV", embedUrl: "" },
-                    { title: "FaSHioN Performance Video", embedUrl: "" },
-                    { title: "Color Outside Visualizer", embedUrl: "" },
-                    { title: "Track 04 Special Clip", embedUrl: "" },
-                    { title: "Track 05 B-Side MV", embedUrl: "" },
-                    { title: "Track 06 Choreography Video", embedUrl: "" },
-                    { title: "Outro Live Session", embedUrl: "" }
-                ] // 7 Videos
+                    { title: "CORTIS(코르티스) 'REDRED' Official MV", embedUrl: "https://youtu.be/U6BDbXIah-Y?si=iRpzzETe7_J1Li3S", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/85/Thumbnail/03c7fd176eba4318af3ee9326f13aaf9.png" },
+                    { title: "CORTIS(코르티스) 'REDRED' Conceptual Performance Film", embedUrl: "https://youtu.be/a1vHjBy85TU?si=O0v8eJ9TyzBPXnR0", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/88/Thumbnail/7f8be5c140ff4e818a2694048b3e5cf9.png" },
+                    { title: "CORTIS(코르티스) 'TNT' Official MV", embedUrl: "https://youtu.be/kRpaqR5sbf0?si=IJIDPgpoKjc-Vy9g", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/95/Thumbnail/0e8e3379833345ae90db15a0dded7bdb.png" },
+                    { title: "CORTIS(코르티스) 'TNT' Conceptual Performance Film", embedUrl: "https://youtu.be/XgmdslsEJ1M?si=DCKk9mNXcvp5VTjE", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/96/Thumbnail/3f82398495864866a8042e4e01b64f5f.png" },
+                    { title: "CORTIS(코르티스) 'ACAI' Official MV", embedUrl: "https://youtu.be/nCElUD0jvgo?si=DU2A5YON2NAt5GUP", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/100/Thumbnail/cd420c09282c4c00ad8c131caad66bff.png" },
+                    { title: "CORTIS(코르티스) 'ACAI' Conceptual Performance Film", embedUrl: "https://youtu.be/SSVT8bLjguY?si=3LVYWwqT3XugaKvy", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/102/Thumbnail/f6df1cd5ca74443296d323542d461cc4.png" },
+                    { title: "CORTIS(코르티스) 'Blue Lips' Official MV", embedUrl: "https://youtu.be/hOIY3OhvD94?si=JDeR32u1j89arOhl", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/105/Thumbnail/c4ec219426e845a6880a5cd11ea5b22e.png" }
+                ]
             },
             {
                 id: 4,
-                title: "THE ARCHIVES & REMIXES",
+                title: "[COLOR OUTSIDE THE LINES]",
                 year: "2025",
-                type: "Special Album",
-                cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80",
+                type: "The 1st EP",
+                cover: "https://image.weversejapan.com/official/live/cortis/contents/mvalbum/124/Thumbnail/b7753f623abe41d8ac809d44e5fd629e.png",
                 mvs: [
-                    { title: "Intro MV", embedUrl: "" },
-                    { title: "Archive Track 01", embedUrl: "" },
-                    { title: "Archive Track 02", embedUrl: "" },
-                    { title: "Remix 01 Special MV", embedUrl: "" },
-                    { title: "Remix 02 Studio Ver.", embedUrl: "" },
-                    { title: "Live Concert Edit 01", embedUrl: "" },
-                    { title: "Live Concert Edit 02", embedUrl: "" },
-                    { title: "Behind The Scene MV", embedUrl: "" },
-                    { title: "Acoustic Session", embedUrl: "" },
-                    { title: "Final Encore Video", embedUrl: "" }
-                ] // 10 Videos
+                    { title: "Intro MV", embedUrl: "", cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" },
+                    { title: "Archive Track 01", embedUrl: "", cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" },
+                    { title: "Archive Track 02", embedUrl: "", cover: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&w=800&q=80" },
+                    { title: "Remix 01 Special MV", embedUrl: "", cover: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" },
+                    { title: "Remix 02 Studio Ver.", embedUrl: "", cover: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80" },
+                    { title: "Live Concert Edit 01", embedUrl: "", cover: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" },
+                    { title: "Live Concert Edit 02", embedUrl: "", cover: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=800&q=80" },
+                    { title: "Behind The Scene MV", embedUrl: "", cover: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80" },
+                    { title: "Acoustic Session", embedUrl: "", cover: "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?auto=format&fit=crop&w=800&q=80" },
+                    { title: "Final Encore Video", embedUrl: "", cover: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" }
+                ]
             }
         ];
 
@@ -402,7 +461,6 @@
         const modalAlbumSubtitle = document.getElementById('modalAlbumSubtitle');
         const mvListContainer = document.getElementById('mvListContainer');
 
-        // Generate Kartu Album di Halaman Utama
         function renderAlbums() {
             albumGrid.innerHTML = albumsData.map(album => `
                 <div class="album-card" onclick="openAlbumModal(${album.id})">
@@ -421,7 +479,6 @@
             `).join('');
         }
 
-        // Buka Modal & Tampilkan List Video di Dalamnya
         function openAlbumModal(albumId) {
             const album = albumsData.find(a => a.id === albumId);
             if (!album) return;
@@ -429,39 +486,51 @@
             modalAlbumTitle.innerText = album.title;
             modalAlbumSubtitle.innerText = `${album.type} (${album.year}) — Total ${album.mvs.length} Video`;
 
-            // Inner HTML untuk daftar MV
-            mvListContainer.innerHTML = album.mvs.map(mv => `
-                <div class="mv-card">
-                    <div class="mv-thumbnail">
-                        ${mv.embedUrl 
-                            ? `<iframe src="${mv.embedUrl}" allowfullscreen></iframe>`
-                            : `<img src="${album.cover}" alt="${mv.title}">`
-                        }
+            mvListContainer.innerHTML = album.mvs.map((mv, index) => {
+                const videoCover = mv.cover ? mv.cover : album.cover;
+                const finalEmbedUrl = getEmbedUrl(mv.embedUrl);
+
+                return `
+                    <div class="mv-card">
+                        <div class="mv-thumbnail" id="thumb-${index}">
+                            <img src="${videoCover}" alt="${mv.title}">
+                            ${finalEmbedUrl ? `
+                                <div class="play-overlay" onclick="playVideo(${index}, '${finalEmbedUrl}')">
+                                    <div class="play-btn-icon">▶</div>
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="mv-info">
+                            <div class="mv-title">${mv.title}</div>
+                        </div>
                     </div>
-                    <div class="mv-info">
-                        <div class="mv-title">${mv.title}</div>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
 
             mvModal.classList.add('active');
         }
 
-        // Tutup Modal
-        closeBtn.addEventListener('click', () => {
-            mvModal.classList.remove('active');
-            mvListContainer.innerHTML = ''; // Hentikan playback video saat ditutup
-        });
+        // Fungsi memutar video setelah diklik
+        function playVideo(index, embedUrl) {
+            const container = document.getElementById(`thumb-${index}`);
+            if (container) {
+                container.innerHTML = `<iframe src="${embedUrl}?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            }
+        }
 
-        // Tutup jika klik di luar area modal
+        function closeModal() {
+            mvModal.classList.remove('active');
+            mvListContainer.innerHTML = ''; 
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+
         mvModal.addEventListener('click', (e) => {
             if (e.target === mvModal) {
-                mvModal.classList.remove('active');
-                mvListContainer.innerHTML = '';
+                closeModal();
             }
         });
 
-        // Jalankan awal
         renderAlbums();
     </script>
 
