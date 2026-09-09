@@ -114,7 +114,7 @@
             max-width: 2000px;
             margin: auto;
             padding: 10px;
-            
+
 
         }
 
@@ -182,6 +182,24 @@
             /* Border putih terang */
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
         }
+
+        .back-btn {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: aliceblue;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 14px;
+            margin: 15px 0 0 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+        }
     </style>
 
 
@@ -192,87 +210,91 @@
     <header>
         <h1> CORTIS Allo Bank Festival</h1>
     </header>
-    <section id="allobank">
-        <div class="gallery-wrapper">
-            <!-- Area Foto Utama + Tombol Panah -->
-            <div class="carousel-container">
-                <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+    <!-- TAMBAHKAN TOMBOL KEMBALI DI SINI -->
+    <a href="foto.html" class="back-btn">&#10094; Kembali ke Photos</a>
 
-                <img id="main-image" src="weverse_4-335927853 (1).jpeg" alt="Allo Bank Festival">
+    <section id="releaseparty">
+        <section id="allobank">
+            <div class="gallery-wrapper">
+                <!-- Area Foto Utama + Tombol Panah -->
+                <div class="carousel-container">
+                    <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
 
-                <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+                    <img id="main-image" src="weverse_4-335927853 (1).jpeg" alt="Allo Bank Festival">
+
+                    <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+
+                <!-- Deretan Thumbnail di Bawah -->
+                <div class="thumbnail-container">
+                    <img class="thumb active" src="weverse_4-335927853 (1).jpeg" onclick="selectImage(0)">
+                    <img class="thumb" src="weverse_4-335927852.jpeg" onclick="selectImage(1)">
+                    <img class="thumb" src="weverse_3-335458293.jpeg" onclick="selectImage(2)">
+                    <img class="thumb" src="allobank/weverse_2-304952149.jpeg" onclick="selectImage(3)">
+                    <img class="thumb" src="allobank/weverse_0-305640920.jpeg" onclick="selectImage(4)">
+                    <img class="thumb" src="allobank/weverse_3-335458298.jpeg" onclick="selectImage(5)">
+                    <img class="thumb" src="allobank/weverse_4-335927854.jpeg" onclick="selectImage(6)">
+                    <img class="thumb" src="allobank/weverse_3-335458294 (1).jpeg" onclick="selectImage(7)">
+
+
+
+
+
+                </div>
             </div>
+        </section>
+        <script>
 
-            <!-- Deretan Thumbnail di Bawah -->
-            <div class="thumbnail-container">
-                <img class="thumb active" src="weverse_4-335927853 (1).jpeg" onclick="selectImage(0)">
-                <img class="thumb" src="weverse_4-335927852.jpeg" onclick="selectImage(1)">
-                <img class="thumb" src="weverse_3-335458293.jpeg" onclick="selectImage(2)">
-                <img class="thumb" src="allobank/weverse_2-304952149.jpeg" onclick="selectImage(3)">
-                <img class="thumb" src="allobank/weverse_0-305640920.jpeg" onclick="selectImage(4)">
-                <img class="thumb" src="allobank/weverse_3-335458298.jpeg" onclick="selectImage(5)">
-                <img class="thumb" src="allobank/weverse_4-335927854.jpeg" onclick="selectImage(6)">
-                <img class="thumb" src="allobank/weverse_3-335458294 (1).jpeg" onclick="selectImage(7)">
+            const images = [
+                'weverse_4-335927853 (1).jpeg',
+                'weverse_4-335927852.jpeg',
+                'weverse_3-335458293.jpeg',
+                'allobank/weverse_2-304952149.jpeg',
+                'allobank/weverse_0-305640920.jpeg',
+                'allobank/weverse_3-335458298.jpeg',
+                'allobank/weverse_4-335927854.jpeg',
+                'allobank/weverse_3-335458294 (1).jpeg'
 
+            ];
 
+            let currentIndex = 0;
 
+            function updateGallery() {
+                // Ganti foto utama
+                document.getElementById('main-image').src = images[currentIndex];
 
+                // Update kelas active pada thumbnail
+                const thumbnails = document.querySelectorAll('.thumb');
+                thumbnails.forEach((thumb, index) => {
+                    if (index === currentIndex) {
+                        thumb.classList.add('active');
+                    } else {
+                        thumb.classList.remove('active');
+                    }
+                });
+            }
 
-            </div>
-        </div>
-    </section>
-    <script>
+            // Fungsi saat tombol panah diklik (-1 atau 1)
+            function changeSlide(direction) {
+                currentIndex += direction;
 
-        const images = [
-            'weverse_4-335927853 (1).jpeg',
-            'weverse_4-335927852.jpeg',
-            'weverse_3-335458293.jpeg',
-            'allobank/weverse_2-304952149.jpeg',
-            'allobank/weverse_0-305640920.jpeg',
-            'allobank/weverse_3-335458298.jpeg',
-            'allobank/weverse_4-335927854.jpeg',
-            'allobank/weverse_3-335458294 (1).jpeg'
-
-        ];
-
-        let currentIndex = 0;
-
-        function updateGallery() {
-            // Ganti foto utama
-            document.getElementById('main-image').src = images[currentIndex];
-
-            // Update kelas active pada thumbnail
-            const thumbnails = document.querySelectorAll('.thumb');
-            thumbnails.forEach((thumb, index) => {
-                if (index === currentIndex) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
+                if (currentIndex >= images.length) {
+                    currentIndex = 0;
                 }
-            });
-        }
+                if (currentIndex < 0) {
+                    currentIndex = images.length - 1;
+                }
 
-        // Fungsi saat tombol panah diklik (-1 atau 1)
-        function changeSlide(direction) {
-            currentIndex += direction;
-
-            if (currentIndex >= images.length) {
-                currentIndex = 0;
-            }
-            if (currentIndex < 0) {
-                currentIndex = images.length - 1;
+                updateGallery();
             }
 
-            updateGallery();
-        }
+            // Fungsi saat thumbnail diklik berdasarkan urutannya (0, 1, 2, dst)
+            function selectImage(index) {
+                currentIndex = index;
+                updateGallery();
+            }
 
-        // Fungsi saat thumbnail diklik berdasarkan urutannya (0, 1, 2, dst)
-        function selectImage(index) {
-            currentIndex = index;
-            updateGallery();
-        }
-
-    </script>
+        </script>
 
 
 </body>
