@@ -62,13 +62,15 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
         }
+
         .page-title {
             text-align: center;
             font-size: 2.2rem;
             margin-bottom: 10px;
             color: #42b966;
             font-family: Georgia, 'Times New Roman', Times, serif;
-        }	
+        }
+
         .logo-box {
             display: flex;
             align-items: center;
@@ -93,11 +95,12 @@
             color: aliceblue;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
         }
+
         img {
             max-width: 100%;
             width: 300px;
             transition: all 0.3s ease;
-            border-radius: 8px; 
+            border-radius: 8px;
 
         }
 
@@ -119,7 +122,7 @@
             /* Membatasi lebar agar baris pertama cukup untuk 3 foto saja */
             margin: 0 auto;
             color: aliceblue;
-            
+
         }
 
         #photo {
@@ -128,7 +131,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px 0;
-            
+
         }
 
         .klik-foto {
@@ -145,57 +148,58 @@
             transform: translate(var(--bg-x, 0px), var(--bg-y, 0px)) scale(1.08);
         }
 
-            /* Bentuk tombol garis tiga */
+        /* Bentuk tombol garis tiga */
         .hamburger {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
         }
+
         .hamburger span {
-        width: 25px;
-        height: 3px;
-        background-color: white;
-        border-radius: 2px;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
         }
 
         /* Sembunyikan menu bawaan */
         .nav-menu {
-        display: none; 
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background-color: #3a9167;
-        padding: 5px;
-        border-radius: 8px;
-        flex-direction: column;
-        /* Warna transparan dengan efek blur di belakangnya */
-                background: rgba(65, 182, 129, 0.65);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                justify-content: space-between;
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #3a9167;
+            padding: 5px;
+            border-radius: 8px;
+            flex-direction: column;
+            /* Warna transparan dengan efek blur di belakangnya */
+            background: rgba(65, 182, 129, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            justify-content: space-between;
         }
 
         /* Munculkan menu pas diklik */
         .nav-menu.active {
-        display: flex;
+            display: flex;
         }
 
         .nav-link {
-        color: white;
-        text-decoration: none;
-        padding: 8px 15px;
-        font-family: Georgia;
-        text-align: center;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            font-family: Georgia;
+            text-align: center;
         }
 
         .nav-link:hover {
-        text-decoration: underline;
-        text-underline-offset: 4px;
-        cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            cursor: pointer;
         }
 
-            footer {
+        footer {
             background-color: rgb(16, 48, 33);
             text-align: center;
             color: rgb(205, 252, 252);
@@ -204,10 +208,10 @@
             font-family: sans-serif;
 
         }
-        
     </style>
 
 </head>
+
 <body>
     <header>
 
@@ -215,23 +219,23 @@
             <!-- Ganti 'logo.png' dengan nama file logomu -->
             <img src="2b64053aa52e4706ac5db831415cc435.png" alt="Logo CORTIS" class="header-logo">
             <h1>Photos</h1>
-            
+
         </div>
-        
+
         <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">
-        <span></span>
-        <span></span>
-        <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    <nav class="nav-menu" id="nav-menu">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="profil.html" class="nav-link">Profil</a>
-    <a href="foto.html" class="nav-link">Photos</a>
-    <a href="achievements.html" class="nav-link">Achievements</a>
-    <a href="album.html" class="nav-link">Discography/Album</a>
-    <a href="musicvideo.html" class="nav-link">Music Video</a>
-    <a href="songlyric.html" class="nav-link">Song Lyric & Fanchant</a>
-    </nav>
+        <nav class="nav-menu" id="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="profil.html" class="nav-link">Profil</a>
+            <a href="foto.html" class="nav-link">Photos</a>
+            <a href="achievements.html" class="nav-link">Achievements</a>
+            <a href="album.html" class="nav-link">Discography/Album</a>
+            <a href="musicvideo.html" class="nav-link">Music Video</a>
+            <a href="songlyric.html" class="nav-link">Song Lyric & Fanchant</a>
+        </nav>
 
     </header>
     <section id="photo">
@@ -258,13 +262,13 @@
                 <div class="klik-foto">
                     <img src="putyourphonedown/weverse_4-337293409.jpeg" />
                     <div>2026 CORTIS TOUR PYPD</div>
-                </div> 
+                </div>
             </a>
             <a href="cotl.html">
                 <div class="klik-foto">
                     <img src="cotl/Screenshot 2026-09-05 140806.png" />
                     <div>COLOR OUTSIDE THE LINES Music Show Moments</div>
-                </div> 
+                </div>
             </a>
 
         </div>

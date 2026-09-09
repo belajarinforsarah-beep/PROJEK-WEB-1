@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +11,19 @@
             padding: 0;
             box-sizing: border-box;
         }
-        body {
-        font-family: Arial, sans-serif;
-        color: #ffffff;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
 
-        background-image: linear-gradient(rgba(10, 18, 32, 0.75), rgba(0, 0, 0, 0.75)), url('https://image.weversejapan.com/official/live/cortis/contents/photo/21/Thumbnail/6c260673a2cb430090b2f8dc9772f5aa.jpg');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed; /* Agar background tetap diam saat di-scroll */
+        body {
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+
+            background-image: linear-gradient(rgba(10, 18, 32, 0.75), rgba(0, 0, 0, 0.75)), url('https://image.weversejapan.com/official/live/cortis/contents/photo/21/Thumbnail/6c260673a2cb430090b2f8dc9772f5aa.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Agar background tetap diam saat di-scroll */
         }
 
         /* HEADER & NAVIGASI */
@@ -70,54 +73,56 @@
             color: aliceblue;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
         }
-         /* Bentuk tombol garis tiga */
+
+        /* Bentuk tombol garis tiga */
         .hamburger {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            margin-left: auto;
         }
+
         .hamburger span {
-        width: 25px;
-        height: 3px;
-        background-color: white;
-        border-radius: 2px;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
         }
 
         /* Sembunyikan menu bawaan */
         .nav-menu {
-        display: none; 
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        padding: 5px;
-        border-radius: 8px;
-        flex-direction: column;
-        /* Warna transparan dengan efek blur di belakangnya */
-                background: rgba(65, 182, 129, 0.45);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                justify-content: space-between;
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            padding: 5px;
+            border-radius: 8px;
+            flex-direction: column;
+            /* Warna transparan dengan efek blur di belakangnya */
+            background: rgba(65, 182, 129, 0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            justify-content: space-between;
         }
 
         /* Munculkan menu pas diklik */
         .nav-menu.active {
-        display: flex;
+            display: flex;
         }
 
         .nav-link {
-        color: white;
-        text-decoration: none;
-        padding: 8px 15px;
-        font-family: georgia;
-        display: block;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            font-family: georgia;
+            display: block;
         }
 
         .nav-link:hover {
-        text-decoration: underline;
-        text-underline-offset: 4px;
-        cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            cursor: pointer;
         }
 
         /* CONTAINER UTAMA */
@@ -150,11 +155,11 @@
             margin-bottom: 25px;
             border: 1px solid #333333;
 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             background: rgba(15, 31, 23, 0.45);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                justify-content: space-between;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            justify-content: space-between;
 
         }
 
@@ -166,21 +171,27 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
+
         /* WADAH FOTO ALBUM & JUDUL LAGU */
         .song-info {
             display: flex;
             align-items: center;
-            gap: 15px; /* Jarak antara gambar cover dan teks judul */
+            gap: 15px;
+            /* Jarak antara gambar cover dan teks judul */
         }
 
         .album-cover {
-            width: 90px;               /* Lebar foto */
-            height: 90px;              /* Tinggi foto */
+            width: 90px;
+            /* Lebar foto */
+            height: 90px;
+            /* Tinggi foto */
             object-fit: cover;
-            border-radius: 8px;        /* Sudut melengkung */
+            border-radius: 8px;
+            /* Sudut melengkung */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
+
         .song-title {
             font-size: 1.5rem;
             color: #ffffff;
@@ -197,51 +208,57 @@
             line-height: 1.8;
             font-size: 1.05rem;
             color: #dddddd;
-            white-space: pre-line; /* Mempertahankan baris baru dari lirik */
+            white-space: pre-line;
+            /* Mempertahankan baris baru dari lirik */
         }
 
         /* HIGHLIGHT KHUSUS FANCHANTS */
         .fanchant {
-            color: #42b966; /* Warna hijau khas untuk fanchant */
+            color: #42b966;
+            /* Warna hijau khas untuk fanchant */
             font-weight: bold;
             background-color: rgba(66, 185, 102, 0.15);
             padding: 2px 6px;
             border-radius: 4px;
         }
-    /* Menghilangkan tanda panah bawaan browser */
-    details summary::-webkit-details-marker {
-        display: none;
-    }
 
-    /* Mengatur header agar bisa diklik dan rapi */
-    .song-header {
-        cursor: pointer;
-        user-select: none;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: none; /* Hilangkan garis bawah saat tertutup */
-        padding-bottom: 0;
-        margin-bottom: 0;
-    }
+        /* Menghilangkan tanda panah bawaan browser */
+        details summary::-webkit-details-marker {
+            display: none;
+        }
 
-    /* Garis pembatas baru muncul saat kartu dibuka */
-    details[open] .song-header {
-        border-bottom: 2px solid #42b966;
-        padding-bottom: 15px;
-        margin-bottom: 20px;
-    }
+        /* Mengatur header agar bisa diklik dan rapi */
+        .song-header {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: none;
+            /* Hilangkan garis bawah saat tertutup */
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
 
-    /* Animasi putar panah saat kartu dibuka */
-    .arrow-icon {
-        font-size: 0.9rem;
-        color: #42b966;
-        transition: transform 0.3s ease;
-    }
+        /* Garis pembatas baru muncul saat kartu dibuka */
+        details[open] .song-header {
+            border-bottom: 2px solid #42b966;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
 
-    details[open] .arrow-icon {
-        transform: rotate(180deg); /* Panah berputar ke atas pas terbuka */
-    }
+        /* Animasi putar panah saat kartu dibuka */
+        .arrow-icon {
+            font-size: 0.9rem;
+            color: #42b966;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] .arrow-icon {
+            transform: rotate(180deg);
+            /* Panah berputar ke atas pas terbuka */
+        }
+
         /* FOOTER */
         footer {
             background-color: #123524;
@@ -252,244 +269,288 @@
             margin-top: auto;
         }
 
+        @media (max-width: 600px) {
+
+            /* 1. Atur Header agar rapi di layar kecil */
+            header {
+                padding: 10px 15px;
+            }
+
+            header h1 {
+                font-size: 16px;
+                /* Mengecilkan judul header agar tidak ketutupan */
+            }
+
+            .header-logo {
+                width: 30px;
+                /* Mengecilkan logo */
+            }
+
+            /* 2. Atur Judul Halaman Utama */
+            .page-title {
+                font-size: 1.6rem;
+            }
+
+            /* 3. Atur Kartu Lagu agar tidak meluap/keluar layar */
+            .lyric-card {
+                padding: 15px;
+            }
+
+            .song-header {
+                align-items: flex-start;
+            }
+
+            .song-info {
+                gap: 10px;
+            }
+
+            .album-cover {
+                width: 65px;
+                height: 65px;
+            }
+
+            .song-title {
+                font-size: 1.1rem;
+                word-break: break-word;
+                /* Memutus kata yang terlalu panjang seperti YOUNGCREATORCREW */
+                overflow-wrap: break-word;
+            }
+
+            .album-name {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <header>
-            <div class="logo-box">
+        <div class="logo-box">
             <!-- Ganti 'logo.png' dengan nama file logomu -->
             <img src="2b64053aa52e4706ac5db831415cc435.png" alt="Logo CORTIS" class="header-logo">
-         <h1 class="header-title">Song Lyrics & Fanchants</h1>
+            <h1 class="header-title">Song Lyrics & Fanchants</h1>
         </div>
-    <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">
+        <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">
             <span></span>
             <span></span>
             <span></span>
-    </div>
+        </div>
         <nav class="nav-menu" id="nav-menu">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="profil.html" class="nav-link">Profil</a>
-        <a href="foto.html" class="nav-link">Photos</a>
-        <a href="achievements.html" class="nav-link">Achievements</a>
-        <a href="album.html" class="nav-link">Discography/Album</a>
-        <a href="musicvideo.html" class="nav-link">Music Video</a>
-        <a href="songlyric.html" class="nav-link">Song Lyric & Fanchant</a>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="profil.html" class="nav-link">Profil</a>
+            <a href="foto.html" class="nav-link">Photos</a>
+            <a href="achievements.html" class="nav-link">Achievements</a>
+            <a href="album.html" class="nav-link">Discography/Album</a>
+            <a href="musicvideo.html" class="nav-link">Music Video</a>
+            <a href="songlyric.html" class="nav-link">Song Lyric & Fanchant</a>
         </nav>
     </header>
 
     <div class="container">
         <h1 class="page-title">Song Lyrics & Fanchants</h1>
-        <p class="page-subtitle">Teks berwarna <span class="fanchant">Hijau ini</span> adalah bagian fanchant yang bakal dinyanyikan fans.</p>
+        <p class="page-subtitle">Teks berwarna <span class="fanchant">Hijau ini</span> adalah bagian fanchant yang bakal
+            dinyanyikan fans.</p>
 
-        <!-- KARTU LAGU 1 -->
-<details class="lyric-card">
-    <!-- SUMMARY ADALAH BAGIAN YANG SELALU KELIATAN (COVER + JUDUL) -->
-    <summary class="song-header">
-        <div class="song-info">
-            <img src="https://image.weversejapan.com/official/live/cortis/contents/Discography/9ca37230d29c469891f92078acd87fd6.jpg" alt="Cover Album" class="album-cover">
-            <div class="title-box">
-                <h2 class="song-title">2. YOUNGCREATORCREW</h2>
-                <span class="album-name">The 2nd EP [GREENGREEN]</span>
-            </div>
-        </div>
-        <!-- Panah penanda bisa diklik -->
-        <span class="arrow-icon">▼</span>
-    </summary>
-  
-            <div class="lyric-box">
-<!-- [Verse 1]
-Baris lirik lagu pertama di sini
-Baris lirik kedua di sini <span class="fanchant">(CORTIS!)</span>
-
-[Chorus]
-Baris lirik reff lagu
-Menyanyikan bagian chorus bersama <span class="fanchant">(COLOR OUTSIDE!)</span> -->
-<span class="fanchant">테판야끼 on my Mac, huh I go 영크크</span> 
-Huh huh, <span class="fanchant">영크크</span>
-Huh huh, <span class="fanchant">영크크</span>
-Old generation, 우릴 불러 “쟤네 <span class="fanchant">영크크</span>”
-<span class="fanchant">영크크</span>
-Huh huh, <span class="fanchant">영크크</span>
-<span class="fanchant">영ㅎㅎ</span>
-
-“야! <span class="fanchant">영크크</span>!”, “야! <span class="fanchant">영크크</span>!”
-너무 웃거버려서 난 <span class="fanchant">영ㅋㅋ</span>
-<span class="fanchant">영ㅎㅎ</span>
-<span class="fanchant">영ㅎㅎ</span>
-<span class="fanchant">요틀레이히 말고 영크크</span>
-
-걍 몇번 해봤는데 새깅
-이젠 불려 난 <span class="fanchant">새깅맨</span>
-감자튀김 좀 먹었을 땐
-바로 감튀남 <span class="fanchant">돼버렸네</span>
-
-미국에서 난 hop in a <span class="fanchant">booth</span>
-프리스타일이나 몇 번 좀 했으
-에라 “꼬 꼬 꼬” 외쳤는데
-<span class="fanchant">따라 나왔네 track</span>
-
-“CORTIS, Where you at? Now let me see your <span class="fanchant">dang face”</span>
-“신선도 좀 보자” 참치 마냥 <span class="fanchant">check check</span>
-2nd EP drop, 여전히 난 <span class="fanchant">쌩쌩</span>
-올크크들 모여유
-
-Run it <span class="fanchant">back, back back back back back back</span>
-못 느낌 일단
-Bop your <span class="fanchant">head, head head head head head head</span>
-So now you know that imma
-
-<span class="fanchant">테판야끼 on my Mac, huh I go 영크크</span>
-Huh huh, <span class="fanchant">영크크</span>
-Huh huh, <span class="fanchant">영크크</span>
-Old generation, 우릴 불러 “쟤네 <span class="fanchant">영크크</span>”
-<span class="fanchant">영크크</span>
-Huh huh, <span class="fanchant">영크크</span>
-<span class="fanchant">영ㅎㅎ</span>
-
-“야! <span class="fanchant">영크크!</span>”, “야! <span class="fanchant">영크크!</span>”
-너무 웃거버려서 난 <span class="fanchant">영ㅋㅋ</span>
-<span class="fanchant">영ㅎㅎ</span>
-<span class="fanchant">영ㅎㅎ</span>
-<span class="fanchant">요틀레이히 말고 영크크</span>
-
-<span class="fanchant">Yeah yeah,</span> 밤엔 미쳐 see me turnin up
-<span class="fanchant">Yeah yeah,</span> 낮춰달래 볼륨 텐션
-텐션 마치 아바타, 시퍼렇게 어린놈
-우린 하루가 모잘라, <span class="fanchant">마치 헤어컷</span>
-
-하마생활 반년해도 여전히 난 <span class="fanchant">배고파</span>
-종합운동장에 서서 듣고 싶어 <span class="fanchant">“that’s so fire”</span>
-2nd EP drop, 우린 달려 <span class="fanchant">쌩쌩</span>
-영크크들 모여유
-
-Run it <span class="fanchant">back, back back back back back back</span>
-못 느낌 일단
-Bop your <span class="fanchant">head, head head head head head head</span>
-So now you know that imma
-
-<span class="fanchant">테판야끼 on my Mac, huh I go 영크크</span>
-Huh huh, <span class="fanchant">영크크</span>
-Huh huh, <span class="fanchant">영크크</span>
-Old generation, 우릴 불러 “쟤네 <span class="fanchant">영크크</span>”
-<span class="fanchant">영크크</span>
-Huh huh, <span class="fanchant">영크크</span>
-<span class="fanchant">영ㅎㅎ</span>
-
-“야! <span class="fanchant">영크크!</span>”, “야! <span class="fanchant">영크크!</span>”
-너무 웃거버려서 난 <span class="fanchant">영ㅋㅋ</span>
-<span class="fanchant">영ㅎㅎ</span>
-<span class="fanchant">영ㅎㅎ</span>
-<span class="fanchant">요틀레이히 말고 영크크</span>
-            </div>
-        </div>
-    </details>
-        <!-- KARTU LAGU 2 -->
-<details class="lyric-card">
-    <!-- SUMMARY ADALAH BAGIAN YANG SELALU KELIATAN (COVER + JUDUL) -->
-    <summary class="song-header">
-        <div class="song-info">
-            <img src="https://image.weversejapan.com/official/live/cortis/contents/Discography/c6f7ecf1ce034f8f89d16f308c2de785.jpg" alt="Cover Album" class="album-cover">
-            <div class="title-box">
-                <h2 class="song-title">1. What You Want</h2>
-                <span class="album-name">The 1st EP [COLOR OUTSIDE THE LINES]</span>
-            </div>
-        </div>
-        <!-- Panah penanda bisa diklik -->
-        <span class="arrow-icon">▼</span>
-    </summary>
+        <!-- KARTU LAGU 1: WHAT YOU WANT (Ditaruh di atas) -->
+        <details class="lyric-card">
+            <summary class="song-header">
+                <div class="song-info">
+                    <img src="https://image.weversejapan.com/official/live/cortis/contents/Discography/c6f7ecf1ce034f8f89d16f308c2de785.jpg"
+                        alt="Cover Album" class="album-cover">
+                    <div class="title-box">
+                        <h2 class="song-title">1. What You Want</h2>
+                        <span class="album-name">The 1st EP [COLOR OUTSIDE THE LINES]</span>
+                    </div>
+                </div>
+                <span class="arrow-icon">▼</span>
+            </summary>
 
             <div class="lyric-box">
-<span class="fanchant">Crash, Smash, Rock, Mash up</span>
-Ooh Take <span class="fanchant">what you want</span>
+                <span class="fanchant">Crash, Smash, Rock, Mash up</span>
+                Ooh Take <span class="fanchant">what you want</span>
 
-<span class="fanchant">돈, 멋, 명예, Love and what?</span>
-Ooh Take <span class="fanchant">what you want</span>
+                <span class="fanchant">돈, 멋, 명예, Love and what?</span>
+                Ooh Take <span class="fanchant">what you want</span>
 
-Life’s too fast, 뭘 더 참아, 이젠 됐어
-<span class="fanchant">(What you want?!)</span>
+                Life’s too fast, 뭘 더 참아, 이젠 됐어
+                <span class="fanchant">(What you want?!)</span>
 
-I want to see the whole world,
-도장 찍어, 나의 passport
-<span class="fanchant">(What you want?!)</span>
+                I want to see the whole world,
+                도장 찍어, 나의 passport
+                <span class="fanchant">(What you want?!)</span>
 
-Well, 이마에 피도 안 말랐을 때 계획한 행보
-<span class="fanchant">(What you want?!)</span>
+                Well, 이마에 피도 안 말랐을 때 계획한 행보
+                <span class="fanchant">(What you want?!)</span>
 
-바라던 걸 찾아 집을 떠나 what we came for
+                바라던 걸 찾아 집을 떠나 what we came for
 
-<span class="fanchant">Crash, Smash, Rock, Mash up</span>
-Ooh Take <span class="fanchant">what you want</span>
+                <span class="fanchant">Crash, Smash, Rock, Mash up</span>
+                Ooh Take <span class="fanchant">what you want</span>
 
-<span class="fanchant">돈, 멋, 명예, Love and what?</span>
-Ooh Take <span class="fanchant">what you want</span>
+                <span class="fanchant">돈, 멋, 명예, Love and what?</span>
+                Ooh Take <span class="fanchant">what you want</span>
 
-적당히론 배가 차지 않아 <span class="fanchant">(않아)</span>
-들이켜, yuh, 마치 하마 <span class="fanchant">(하마)</span>
-Smelling like a teen, 마치 Nirvana <span class="fanchant">(vana)</span>
-소리쳐, yuh, cause we wanna
+                적당히론 배가 차지 않아 <span class="fanchant">(않아)</span>
+                들이켜, yuh, 마치 하마 <span class="fanchant">(하마)</span>
+                Smelling like a teen, 마치 Nirvana <span class="fanchant">(vana)</span>
+                소리쳐, yuh, cause we wanna
 
-That’s what we all looking for <span class="fanchant">(CORTIS)</span>
-That’s what we all looking for <span class="fanchant">(CORTIS)</span>
+                That’s what we all looking for <span class="fanchant">(CORTIS)</span>
+                That’s what we all looking for <span class="fanchant">(CORTIS)</span>
 
-That’s what we all looking for
-That’s what we all looking-
-<span class="fanchant">(One, Two, Three)</span> For
+                That’s what we all looking for
+                That’s what we all looking-
+                <span class="fanchant">(One, Two, Three)</span> For
 
-난 걍 돌아갈 바엔 바로
-넘어버려 담장
-<span class="fanchant">(What you want?!)</span>
+                난 걍 돌아갈 바엔 바로
+                넘어버려 담장
+                <span class="fanchant">(What you want?!)</span>
 
-난 원해 다시 뛰게 할 무언갈,
-나의 심장
-<span class="fanchant">(What you want?!)</span>
+                난 원해 다시 뛰게 할 무언갈,
+                나의 심장
+                <span class="fanchant">(What you want?!)</span>
 
-야밤, 새벽 배송 같은 fresh song, I need that
-<span class="fanchant">(What you want?!)</span>
-I want the whole world
-to <span class="fanchant">wake up</span> and realize
+                야밤, 새벽 배송 같은 fresh song, I need that
+                <span class="fanchant">(What you want?!)</span>
+                I want the whole world
+                to <span class="fanchant">wake up</span> and realize
 
-Some people want <span class="fanchant">(this)</span>
-Some people want <span class="fanchant">(that)</span>
+                Some people want <span class="fanchant">(this)</span>
+                Some people want <span class="fanchant">(that)</span>
 
-나도 똑같아 17년 평 <span class="fanchant">생</span>
-쫓았었던 Love
-쫓았었던 Fame
-So now I want the whole world
-to know my name
+                나도 똑같아 17년 평 <span class="fanchant">생</span>
+                쫓았었던 Love
+                쫓았었던 Fame
+                So now I want the whole world
+                to know my name
 
-<span class="fanchant">Crash, Smash, Rock, Mash up</span>
-Ooh Take <span class="fanchant">what you want</span>
+                <span class="fanchant">Crash, Smash, Rock, Mash up</span>
+                Ooh Take <span class="fanchant">what you want</span>
 
-<span class="fanchant">돈, 멋, 명예, Love and what?</span>
-Ooh Take <span class="fanchant">what you want</span>
+                <span class="fanchant">돈, 멋, 명예, Love and what?</span>
+                Ooh Take <span class="fanchant">what you want</span>
 
-적당히론 배가 차지 않아 <span class="fanchant">(않아)</span>
-들이켜, yuh, 마치 하마 <span class="fanchant">(하마)</span>
+                적당히론 배가 차지 않아 <span class="fanchant">(않아)</span>
+                들이켜, yuh, 마치 하마 <span class="fanchant">(하마)</span>
 
-Smelling like a teen, 마치 Nirvana <span class="fanchant">(vana)</span>
-소리쳐, yuh, cause we wanna
+                Smelling like a teen, 마치 Nirvana <span class="fanchant">(vana)</span>
+                소리쳐, yuh, cause we wanna
 
-That’s what we all looking for <span class="fanchant">(CORTIS)</span>
-That’s what we all looking for <span class="fanchant">(CORTIS)</span>
+                That’s what we all looking for <span class="fanchant">(CORTIS)</span>
+                That’s what we all looking for <span class="fanchant">(CORTIS)</span>
 
-That’s what we all looking for
-That’s what we all looking-
-<span class="fanchant">(One, Two, Three)</span> For
+                That’s what we all looking for
+                That’s what we all looking-
+                <span class="fanchant">(One, Two, Three)</span> For
 
-<span class="fanchant">(What you want!)</span>
+                <span class="fanchant">(What you want!)</span>
 
-<span class="fanchant">(What you want!)</span>
+                <span class="fanchant">(What you want!)</span>
 
-<span class="fanchant">(What you want!)</span>
+                <span class="fanchant">(What you want!)</span>
 
-<span class="fanchant">(What you want!)</span>
+                <span class="fanchant">(What you want!)</span>
 
-<span class="fanchant">(함성)</span>
+                <span class="fanchant">(함성)</span>
             </div>
-        </div>
+        </details>
+
+        <!-- KARTU LAGU 2: YOUNGCREATORCREW -->
+        <details class="lyric-card">
+            <summary class="song-header">
+                <div class="song-info">
+                    <img src="https://image.weversejapan.com/official/live/cortis/contents/Discography/9ca37230d29c469891f92078acd87fd6.jpg"
+                        alt="Cover Album" class="album-cover">
+                    <div class="title-box">
+                        <h2 class="song-title">2. YOUNGCREATORCREW</h2>
+                        <span class="album-name">The 2nd EP [GREENGREEN]</span>
+                    </div>
+                </div>
+                <span class="arrow-icon">▼</span>
+            </summary>
+
+            <div class="lyric-box">
+                <span class="fanchant">테판야끼 on my Mac, huh I go 영크크</span>
+                Huh huh, <span class="fanchant">영크크</span>
+                Huh huh, <span class="fanchant">영크크</span>
+                Old generation, 우릴 불러 “쟤네 <span class="fanchant">영크크</span>”
+                <span class="fanchant">영크크</span>
+                Huh huh, <span class="fanchant">영크크</span>
+                <span class="fanchant">영ㅎㅎ</span>
+
+                “야! <span class="fanchant">영크크</span>!”, “야! <span class="fanchant">영크크</span>!”
+                너무 웃거버려서 난 <span class="fanchant">영ㅋㅋ</span>
+                <span class="fanchant">영ㅎㅎ</span>
+                <span class="fanchant">영ㅎㅎ</span>
+                <span class="fanchant">요틀레이히 말고 영크크</span>
+
+                걍 몇번 해봤는데 새깅
+                이젠 불려 난 <span class="fanchant">새깅맨</span>
+                감자튀김 좀 먹었을 땐
+                바로 감튀남 <span class="fanchant">돼버렸네</span>
+
+                미국에서 난 hop in a <span class="fanchant">booth</span>
+                프리스타일이나 몇 번 좀 했으
+                에라 “꼬 꼬 꼬” 외쳤는데
+                <span class="fanchant">따라 나왔네 track</span>
+
+                “CORTIS, Where you at? Now let me see your <span class="fanchant">dang face”</span>
+                “신선도 좀 보자” 참치 마냥 <span class="fanchant">check check</span>
+                2nd EP drop, 여전히 난 <span class="fanchant">쌩쌩</span>
+                올크크들 모여유
+
+                Run it <span class="fanchant">back, back back back back back back</span>
+                못 느낌 일단
+                Bop your <span class="fanchant">head, head head head head head head</span>
+                So now you know that imma
+
+                <span class="fanchant">테판야끼 on my Mac, huh I go 영크크</span>
+                Huh huh, <span class="fanchant">영크크</span>
+                Huh huh, <span class="fanchant">영크크</span>
+                Old generation, 우릴 불러 “쟤네 <span class="fanchant">영크크</span>”
+                <span class="fanchant">영크크</span>
+                Huh huh, <span class="fanchant">영크크</span>
+                <span class="fanchant">영ㅎㅎ</span>
+
+                “야! <span class="fanchant">영크크!</span>”, “야! <span class="fanchant">영크크!</span>”
+                너무 웃거버려서 난 <span class="fanchant">영ㅋㅋ</span>
+                <span class="fanchant">영ㅎㅎ</span>
+                <span class="fanchant">영ㅎㅎ</span>
+                <span class="fanchant">요틀레이히 말고 영크크</span>
+
+                <span class="fanchant">Yeah yeah,</span> 밤엔 미쳐 see me turnin up
+                <span class="fanchant">Yeah yeah,</span> 낮춰달래 볼륨 텐션
+                텐션 마치 아바타, 시퍼렇게 어린놈
+                우린 하루가 모잘라, <span class="fanchant">마치 헤어컷</span>
+
+                하마생활 반년해도 여전히 난 <span class="fanchant">배고파</span>
+                종합운동장에 서서 듣고 싶어 <span class="fanchant">“that’s so fire”</span>
+                2nd EP drop, 우린 달려 <span class="fanchant">쌩쌩</span>
+                영크크들 모여유
+
+                Run it <span class="fanchant">back, back back back back back back</span>
+                못 느낌 일단
+                Bop your <span class="fanchant">head, head head head head head head</span>
+                So now you know that imma
+
+                <span class="fanchant">테판야끼 on my Mac, huh I go 영크크</span>
+                Huh huh, <span class="fanchant">영크크</span>
+                Huh huh, <span class="fanchant">영크크</span>
+                Old generation, 우릴 불러 “쟤네 <span class="fanchant">영크크</span>”
+                <span class="fanchant">영크크</span>
+                Huh huh, <span class="fanchant">영크크</span>
+                <span class="fanchant">영ㅎㅎ</span>
+
+                “야! <span class="fanchant">영크크!</span>”, “야! <span class="fanchant">영크크!</span>”
+                너무 웃거버려서 난 <span class="fanchant">영ㅋㅋ</span>
+                <span class="fanchant">영ㅎㅎ</span>
+                <span class="fanchant">영ㅎㅎ</span>
+                <span class="fanchant">요틀레이히 말고 영크크</span>
+            </div>
+        </details>
     </div>
-</details>
+    </details>
 
     <footer>
         <div>&copy; 2026 Proyek Tugas HTML Sekolah - Dibuat oleh Nurin & Sarah. </div>
@@ -498,4 +559,5 @@ That’s what we all looking-
                 MUSIC / HYBE.</small></div>
     </footer>
 </body>
+
 </html>
