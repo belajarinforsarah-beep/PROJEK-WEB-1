@@ -180,6 +180,24 @@
             /* Border putih terang */
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
         }
+
+        .back-btn {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: aliceblue;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 14px;
+            margin: 15px 0 0 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+        }
     </style>
 
 
@@ -190,87 +208,92 @@
     <header>
         <h1>CORTIS The 2nd EP RELEASE PARTY</h1>
     </header>
+    <!-- TAMBAHKAN TOMBOL KEMBALI DI SINI -->
+    <a href="foto.html" class="back-btn">&#10094; Kembali ke Photos</a>
+
     <section id="releaseparty">
-        <div class="gallery-wrapper">
-            <!-- Area Foto Utama + Tombol Panah -->
-            <div class="carousel-container">
-                <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+        <section id="releaseparty">
+            <div class="gallery-wrapper">
+                <!-- Area Foto Utama + Tombol Panah -->
+                <div class="carousel-container">
+                    <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
 
-                <img id="main-image" src="releaseparty/weverse_2-303586083.jpeg" alt="CORTIS The 2nd EP RELEASE PARTY">
+                    <img id="main-image" src="releaseparty/weverse_2-303586083.jpeg"
+                        alt="CORTIS The 2nd EP RELEASE PARTY">
 
-                <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+                    <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+
+                <!-- Deretan Thumbnail di Bawah -->
+                <div class="thumbnail-container">
+                    <img class="thumb active" src="releaseparty/weverse_2-303586083.jpeg" onclick="selectImage(0)">
+                    <img class="thumb" src="releaseparty/weverse_1-304160030.jpeg" onclick="selectImage(1)">
+                    <img class="thumb" src="releaseparty/weverse_1-304160031.jpeg" onclick="selectImage(2)">
+                    <img class="thumb" src="releaseparty/weverse_3-332725222.jpeg" onclick="selectImage(3)">
+                    <img class="thumb" src="releaseparty/weverse_3-332725235.jpeg" onclick="selectImage(4)">
+                    <img class="thumb" src="releaseparty/weverse_3-332725236.jpeg" onclick="selectImage(5)">
+                    <img class="thumb" src="releaseparty/weverse_4-333192110.jpeg" onclick="selectImage(6)">
+                    <img class="thumb" src="releaseparty/weverse_4-333192114.jpeg" onclick="selectImage(7)">
+                    <img class="thumb" src="releaseparty/weverse_4-333192115.jpeg" onclick="selectImage(8)">
+
+
+                </div>
             </div>
+        </section>
+        <script>
 
-            <!-- Deretan Thumbnail di Bawah -->
-            <div class="thumbnail-container">
-                <img class="thumb active" src="releaseparty/weverse_2-303586083.jpeg" onclick="selectImage(0)">
-                <img class="thumb" src="releaseparty/weverse_1-304160030.jpeg" onclick="selectImage(1)">
-                <img class="thumb" src="releaseparty/weverse_1-304160031.jpeg" onclick="selectImage(2)">
-                <img class="thumb" src="releaseparty/weverse_3-332725222.jpeg" onclick="selectImage(3)">
-                <img class="thumb" src="releaseparty/weverse_3-332725235.jpeg" onclick="selectImage(4)">
-                <img class="thumb" src="releaseparty/weverse_3-332725236.jpeg" onclick="selectImage(5)">
-                <img class="thumb" src="releaseparty/weverse_4-333192110.jpeg" onclick="selectImage(6)">
-                <img class="thumb" src="releaseparty/weverse_4-333192114.jpeg" onclick="selectImage(7)">
-                <img class="thumb" src="releaseparty/weverse_4-333192115.jpeg" onclick="selectImage(8)">
-
-
-            </div>
-        </div>
-    </section>
-    <script>
-
-        const images = [
-            'releaseparty/weverse_2-303586083.jpeg',
-            'releaseparty/weverse_1-304160030.jpeg',
-            'releaseparty/weverse_1-304160031.jpeg',
-            'releaseparty/weverse_3-332725222.jpeg',
-            'releaseparty/weverse_3-332725235.jpeg',
-            'releaseparty/weverse_3-332725236.jpeg',
-            'releaseparty/weverse_4-333192110.jpeg',
-            'releaseparty/weverse_4-333192114.jpeg',
-            'releaseparty/weverse_4-333192115.jpeg'
+            const images = [
+                'releaseparty/weverse_2-303586083.jpeg',
+                'releaseparty/weverse_1-304160030.jpeg',
+                'releaseparty/weverse_1-304160031.jpeg',
+                'releaseparty/weverse_3-332725222.jpeg',
+                'releaseparty/weverse_3-332725235.jpeg',
+                'releaseparty/weverse_3-332725236.jpeg',
+                'releaseparty/weverse_4-333192110.jpeg',
+                'releaseparty/weverse_4-333192114.jpeg',
+                'releaseparty/weverse_4-333192115.jpeg'
 
 
-        ];
+            ];
 
-        let currentIndex = 0;
+            let currentIndex = 0;
 
-        function updateGallery() {
-            // Ganti foto utama
-            document.getElementById('main-image').src = images[currentIndex];
+            function updateGallery() {
+                // Ganti foto utama
+                document.getElementById('main-image').src = images[currentIndex];
 
-            // Update kelas active pada thumbnail
-            const thumbnails = document.querySelectorAll('.thumb');
-            thumbnails.forEach((thumb, index) => {
-                if (index === currentIndex) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
+                // Update kelas active pada thumbnail
+                const thumbnails = document.querySelectorAll('.thumb');
+                thumbnails.forEach((thumb, index) => {
+                    if (index === currentIndex) {
+                        thumb.classList.add('active');
+                    } else {
+                        thumb.classList.remove('active');
+                    }
+                });
+            }
+
+            // Fungsi saat tombol panah diklik (-1 atau 1)
+            function changeSlide(direction) {
+                currentIndex += direction;
+
+                if (currentIndex >= images.length) {
+                    currentIndex = 0;
                 }
-            });
-        }
+                if (currentIndex < 0) {
+                    currentIndex = images.length - 1;
+                }
 
-        // Fungsi saat tombol panah diklik (-1 atau 1)
-        function changeSlide(direction) {
-            currentIndex += direction;
-
-            if (currentIndex >= images.length) {
-                currentIndex = 0;
-            }
-            if (currentIndex < 0) {
-                currentIndex = images.length - 1;
+                updateGallery();
             }
 
-            updateGallery();
-        }
+            // Fungsi saat thumbnail diklik berdasarkan urutannya (0, 1, 2, dst)
+            function selectImage(index) {
+                currentIndex = index;
+                updateGallery();
+            }
 
-        // Fungsi saat thumbnail diklik berdasarkan urutannya (0, 1, 2, dst)
-        function selectImage(index) {
-            currentIndex = index;
-            updateGallery();
-        }
-
-    </script>
+        </script>
 
 
 </body>

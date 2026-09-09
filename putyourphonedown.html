@@ -180,6 +180,24 @@
             /* Border putih terang */
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
         }
+
+        .back-btn {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: aliceblue;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 14px;
+            margin: 15px 0 0 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+        }
     </style>
 
 
@@ -190,102 +208,107 @@
     <header>
         <h1>2026 CORTIS TOUR [PUT YOUR PHONE DOWN] </h1>
     </header>
+    <!-- TAMBAHKAN TOMBOL KEMBALI DI SINI -->
+    <a href="foto.html" class="back-btn">&#10094; Kembali ke Photos</a>
+
     <section id="releaseparty">
-        <div class="gallery-wrapper">
-            <!-- Area Foto Utama + Tombol Panah -->
-            <div class="carousel-container">
-                <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+        <section id="releaseparty">
+            <div class="gallery-wrapper">
+                <!-- Area Foto Utama + Tombol Panah -->
+                <div class="carousel-container">
+                    <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
 
-                <img id="main-image" src="putyourphonedown/weverse_4-337293409.jpeg" alt="2026 CORTIS TOUR [PUT YOUR PHONE DOWN]">
+                    <img id="main-image" src="putyourphonedown/weverse_4-337293409.jpeg"
+                        alt="2026 CORTIS TOUR [PUT YOUR PHONE DOWN]">
 
-                <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+                    <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+
+                <!-- Deretan Thumbnail di Bawah -->
+                <div class="thumbnail-container">
+                    <img class="thumb active" src="putyourphonedown/weverse_4-337293409.jpeg" onclick="selectImage(0)">
+                    <img class="thumb" src="putyourphonedown/weverse_0-306323380.jpeg" onclick="selectImage(1)">
+                    <img class="thumb" src="putyourphonedown/weverse_1-306207514.jpeg" onclick="selectImage(2)">
+                    <img class="thumb" src="putyourphonedown/weverse_1-306207515.jpeg" onclick="selectImage(3)">
+                    <img class="thumb" src="putyourphonedown/weverse_1-306207517.jpeg" onclick="selectImage(4)">
+                    <img class="thumb" src="putyourphonedown/weverse_1-306207519.jpeg" onclick="selectImage(5)">
+                    <img class="thumb" src="putyourphonedown/weverse_1-306207522.jpeg" onclick="selectImage(6)">
+                    <img class="thumb" src="putyourphonedown/weverse_2-305634909.jpeg" onclick="selectImage(7)">
+                    <img class="thumb" src="putyourphonedown/weverse_2-305634912.jpeg" onclick="selectImage(8)">
+                    <img class="thumb" src="putyourphonedown/weverse_2-305634913.jpeg" onclick="selectImage(9)">
+                    <img class="thumb" src="putyourphonedown/weverse_2-305634914.jpeg" onclick="selectImage(10)">
+                    <img class="thumb" src="putyourphonedown/weverse_3-336822378.jpeg" onclick="selectImage(11)">
+                    <img class="thumb" src="putyourphonedown/weverse_3-336822399.jpeg" onclick="selectImage(12)">
+                    <img class="thumb" src="putyourphonedown/weverse_4-337293409.jpeg" onclick="selectImage(13)">
+                    <img class="thumb" src="putyourphonedown/weverse_4-337293414.jpeg" onclick="selectImage(14)">
+                    <img class="thumb" src="putyourphonedown/weverse_4-337293423.jpeg" onclick="selectImage(15)">
+                    <img class="thumb" src="putyourphonedown/weverse_4-337293427.jpeg" onclick="selectImage(16)">
+
+                </div>
             </div>
+        </section>
+        <script>
 
-            <!-- Deretan Thumbnail di Bawah -->
-            <div class="thumbnail-container">
-                <img class="thumb active" src="putyourphonedown/weverse_4-337293409.jpeg" onclick="selectImage(0)">
-                <img class="thumb" src="putyourphonedown/weverse_0-306323380.jpeg" onclick="selectImage(1)">
-                <img class="thumb" src="putyourphonedown/weverse_1-306207514.jpeg" onclick="selectImage(2)">
-                <img class="thumb" src="putyourphonedown/weverse_1-306207515.jpeg" onclick="selectImage(3)">
-                <img class="thumb" src="putyourphonedown/weverse_1-306207517.jpeg" onclick="selectImage(4)">
-                <img class="thumb" src="putyourphonedown/weverse_1-306207519.jpeg" onclick="selectImage(5)">
-                <img class="thumb" src="putyourphonedown/weverse_1-306207522.jpeg" onclick="selectImage(6)">
-                <img class="thumb" src="putyourphonedown/weverse_2-305634909.jpeg" onclick="selectImage(7)">
-                <img class="thumb" src="putyourphonedown/weverse_2-305634912.jpeg" onclick="selectImage(8)">
-                <img class="thumb" src="putyourphonedown/weverse_2-305634913.jpeg" onclick="selectImage(8)">
-                <img class="thumb" src="putyourphonedown/weverse_2-305634914.jpeg" onclick="selectImage(8)">
-                <img class="thumb" src="putyourphonedown/weverse_3-336822378.jpeg" onclick="selectImage(8)">
-                <img class="thumb" src="putyourphonedown/weverse_3-336822399.jpeg" onclick="selectImage(8)">
-                <img class="thumb" src="putyourphonedown/weverse_4-337293409.jpeg" onclick="selectImage(8)">
-                <img class="thumb" src="putyourphonedown/weverse_4-337293414.jpeg" onclick="selectImage(8)">
-                <img class="thumb" src="putyourphonedown/weverse_4-337293423.jpeg" onclick="selectImage(8)">
-                <img class="thumb" src="putyourphonedown/weverse_4-337293427.jpeg" onclick="selectImage(8)">
-
-            </div>
-        </div>
-    </section>
-    <script>
-
-        const images = [
-            'putyourphonedown/weverse_4-337293409.jpeg',
-            'putyourphonedown/weverse_0-306323380.jpeg',
-            'putyourphonedown/weverse_1-306207514.jpeg',
-            'putyourphonedown/weverse_1-306207515.jpeg',
-            'putyourphonedown/weverse_1-306207517.jpeg',
-            'putyourphonedown/weverse_1-306207519.jpeg',
-            'putyourphonedown/weverse_1-306207522.jpeg',
-            'putyourphonedown/weverse_2-305634909.jpeg',
-            'putyourphonedown/weverse_2-305634912.jpeg',
-            'putyourphonedown/weverse_2-305634913.jpeg',
-            'putyourphonedown/weverse_2-305634914.jpeg',
-            'putyourphonedown/weverse_3-336822378.jpeg',
-            'putyourphonedown/weverse_3-336822399.jpeg',
-            'putyourphonedown/weverse_4-337293409.jpeg',
-            'putyourphonedown/weverse_4-337293414.jpeg',
-            'putyourphonedown/weverse_4-337293423.jpeg',
-            'putyourphonedown/weverse_4-337293427.jpeg'
+            const images = [
+                'putyourphonedown/weverse_4-337293409.jpeg',
+                'putyourphonedown/weverse_0-306323380.jpeg',
+                'putyourphonedown/weverse_1-306207514.jpeg',
+                'putyourphonedown/weverse_1-306207515.jpeg',
+                'putyourphonedown/weverse_1-306207517.jpeg',
+                'putyourphonedown/weverse_1-306207519.jpeg',
+                'putyourphonedown/weverse_1-306207522.jpeg',
+                'putyourphonedown/weverse_2-305634909.jpeg',
+                'putyourphonedown/weverse_2-305634912.jpeg',
+                'putyourphonedown/weverse_2-305634913.jpeg',
+                'putyourphonedown/weverse_2-305634914.jpeg',
+                'putyourphonedown/weverse_3-336822378.jpeg',
+                'putyourphonedown/weverse_3-336822399.jpeg',
+                'putyourphonedown/weverse_4-337293409.jpeg',
+                'putyourphonedown/weverse_4-337293414.jpeg',
+                'putyourphonedown/weverse_4-337293423.jpeg',
+                'putyourphonedown/weverse_4-337293427.jpeg'
 
 
-        ];
+            ];
 
-        let currentIndex = 0;
+            let currentIndex = 0;
 
-        function updateGallery() {
-            // Ganti foto utama
-            document.getElementById('main-image').src = images[currentIndex];
+            function updateGallery() {
+                // Ganti foto utama
+                document.getElementById('main-image').src = images[currentIndex];
 
-            // Update kelas active pada thumbnail
-            const thumbnails = document.querySelectorAll('.thumb');
-            thumbnails.forEach((thumb, index) => {
-                if (index === currentIndex) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
+                // Update kelas active pada thumbnail
+                const thumbnails = document.querySelectorAll('.thumb');
+                thumbnails.forEach((thumb, index) => {
+                    if (index === currentIndex) {
+                        thumb.classList.add('active');
+                    } else {
+                        thumb.classList.remove('active');
+                    }
+                });
+            }
+
+            // Fungsi saat tombol panah diklik (-1 atau 1)
+            function changeSlide(direction) {
+                currentIndex += direction;
+
+                if (currentIndex >= images.length) {
+                    currentIndex = 0;
                 }
-            });
-        }
+                if (currentIndex < 0) {
+                    currentIndex = images.length - 1;
+                }
 
-        // Fungsi saat tombol panah diklik (-1 atau 1)
-        function changeSlide(direction) {
-            currentIndex += direction;
-
-            if (currentIndex >= images.length) {
-                currentIndex = 0;
-            }
-            if (currentIndex < 0) {
-                currentIndex = images.length - 1;
+                updateGallery();
             }
 
-            updateGallery();
-        }
+            // Fungsi saat thumbnail diklik berdasarkan urutannya (0, 1, 2, dst)
+            function selectImage(index) {
+                currentIndex = index;
+                updateGallery();
+            }
 
-        // Fungsi saat thumbnail diklik berdasarkan urutannya (0, 1, 2, dst)
-        function selectImage(index) {
-            currentIndex = index;
-            updateGallery();
-        }
-
-    </script>
+        </script>
 
 
 </body>
