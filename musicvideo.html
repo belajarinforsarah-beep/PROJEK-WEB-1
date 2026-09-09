@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Video - CORTIS</title>
+  <style>
+    body {
+      background-color: #1a1a2e; /* Warna latar belakang gelap */
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .specials-container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .special-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 40px;
+    }
+
+    .special-item:last-child {
+      border-bottom: none;
+    }
+
+    .image-container {
+      width: 100%;
+      max-width: 320px;
+      height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .special-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 0 12px 0;
+    }
+
+    .special-year {
+      font-size: 1.1rem;
+      color: #a0a0b0;
+      margin: 0 0 24px 0;
+    }
+
+    .btn-watch {
+      background-color: #ff9ebb; /* Warna tombol pink muda */
+      color: #000000;
+      text-decoration: none;
+      padding: 12px 32px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-watch:hover {
+      background-color: #ff85a2;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="specials-container">
+    
+    <!-- Item 1 -->
+    <div class="special-item">
+      <div class="image-container">
+        <!-- Ganti src dengan link/path gambar lu -->
+        <img src="https://via.placeholder.com/320x200" alt="Joy In The Trenches">
+      </div>
+      <h2 class="special-title">Trevor Noah: Joy In The Trenches</h2>
+      <p class="special-year">2026</p>
+      <a href="#" class="btn-watch">Watch Now</a>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="special-item">
+      <div class="image-container">
+        <!-- Ganti src dengan link/path gambar lu -->
+        <img src="https://via.placeholder.com/320x200" alt="Where Was I?">
+      </div>
+      <h2 class="special-title">Trevor Noah: Where Was I?</h2>
+      <p class="special-year">2023</p>
+      <a href="#" class="btn-watch">Watch Now</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
