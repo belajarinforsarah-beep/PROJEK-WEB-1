@@ -17,8 +17,12 @@
             background-color: #0b0c10;
             color: #ffffff;
             font-family: 'Space Grotesk', sans-serif;
-            padding: 0 0 6rem 0;
-            /* Ubah padding atas jadi 0 agar rapat seperti kode kedua */
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+
         }
 
         /* HEADER & NAVIGASI */
@@ -63,15 +67,9 @@
             gap: 5px;
             cursor: pointer;
             width: fit-content;
-            margin-bottom: 1.5rem;
-            /* MODIFIKASI UNTUK PINDAH KE KANAN */
-            position: absolute;
-            top: 2rem;
-            /* Sesuaikan jarak dari atas layar */
-            right: 5%;
-            /* Sejajar dengan padding kanan body (5%) */
-            z-index: 10000;
-            /* Agar tombol tetap di atas elemen lain */
+            /* Merapikan posisi hamburger di navbar */
+            position: static;
+            margin: 0;
         }
 
         .hamburger span {
@@ -125,7 +123,12 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
+            padding: 2rem 5%;
+            flex: 1 0 auto;
+            /* Padding sejajar kanan-kiri */
+            /* PENTING: Memaksa area album mengisi ruang kosong */
         }
+
 
         .album-card {
             background-color: #12141a;
@@ -360,17 +363,22 @@
         }
 
         footer {
-            background-color: rgb(16, 48, 33);
+            background-color: rgb(35, 103, 72);
             text-align: center;
             color: rgb(205, 252, 252);
             width: 100%;
             bottom: 0;
             left: 0;
             position: fixed;
-            padding: 15px 0;
+            padding: 20px 10px;
             box-sizing: border-box;
             font-family: sans-serif;
-            z-index: 10;
+            margin-top: auto; /* PENTING: Menyorong footer hanya di akhir konten */
+            position: relative;
+        }
+
+        html {
+            height: 100%;
         }
     </style>
 </head>
