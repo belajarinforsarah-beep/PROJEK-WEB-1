@@ -17,7 +17,44 @@
             background-color: #0b0c10;
             color: #ffffff;
             font-family: 'Space Grotesk', sans-serif;
-            padding: 2rem 5% 6rem 5%;
+            padding: 0 0 6rem 0;
+            /* Ubah padding atas jadi 0 agar rapat seperti kode kedua */
+        }
+
+        /* HEADER & NAVIGASI */
+        header {
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(35, 103, 72, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            /* Padding header yang pas */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+            color: aliceblue;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
         .hamburger {
@@ -339,24 +376,31 @@
 </head>
 
 <body>
+    <header>
+        <div class="logo-box">
+            <img src="2b64053aa52e4706ac5db831415cc435.png" alt="Logo CORTIS" class="header-logo">
+            <h1 class="header-title">Discography & Music Videos</h1>
+        </div>
 
-    <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+        <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
-    <nav class="nav-menu" id="nav-menu">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="profil.html" class="nav-link">Profil</a>
-        <a href="foto.html" class="nav-link">Photos</a>
-        <a href="achievements.html" class="nav-link">Achievements</a>
-        <a href="album.html" class="nav-link">Discography/Album</a>
-        <a href="musicvideo.html" class="nav-link">Music Video</a>
-        <a href="songlyric.html" class="nav-link">Song Lyric & Fanchant</a>
-    </nav>
+        <nav class="nav-menu" id="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="profil.html" class="nav-link">Profil</a>
+            <a href="foto.html" class="nav-link">Photos</a>
+            <a href="achievements.html" class="nav-link">Achievements</a>
+            <a href="album.html" class="nav-link">Discography/Album</a>
+            <a href="musicvideo.html" class="nav-link">Music Video</a>
+            <a href="songlyric.html" class="nav-link">Song Lyric & Fanchant</a>
+        </nav>
 
-    <h1 class="page-title">Discography & Music Videos</h1>
+    </header>
+
+
 
     <main class="album-grid" id="albumGrid"></main>
 
