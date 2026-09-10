@@ -14,7 +14,9 @@
         }
 
         body {
-            background-color: #0b0c10;
+            background: linear-gradient(180deg, #20573d 0%, #081818 100%);
+            background-attachment: fixed; /* PENTING: Mengunci gradasi agar tidak berulang saat di-scroll */
+            background-repeat: no-repeat;
             color: #ffffff;
             font-family: 'Space Grotesk', sans-serif;
             margin: 0;
@@ -22,7 +24,6 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-
         }
 
         /* HEADER & NAVIGASI */
@@ -125,6 +126,10 @@
             display: grid;
             /* Disesuaikan agar card landscape terlihat ideal di layar lebar */
             gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 3rem auto 0 auto;
         }
 
         .album-card {
@@ -398,7 +403,7 @@
             <a href="profil.html" class="nav-link">Profil</a>
             <a href="foto.html" class="nav-link">Photos</a>
             <a href="achievements.html" class="nav-link">Achievements</a>
-            <a href="album.html" class="nav-link">Discography/Album</a>
+            <a href="album.html" class="nav-link">Discography</a>
             <a href="musicvideo.html" class="nav-link">Music Video</a>
             <a href="songlyric.html" class="nav-link">Song Lyric & Fanchant</a>
         </nav>
