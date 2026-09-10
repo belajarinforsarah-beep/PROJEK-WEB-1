@@ -27,14 +27,10 @@
             cursor: pointer;
             width: fit-content;
             margin-bottom: 1.5rem;
-            /* MODIFIKASI UNTUK PINDAH KE KANAN */
             position: absolute;
             top: 2rem;
-            /* Sesuaikan jarak dari atas layar */
             right: 5%;
-            /* Sejajar dengan padding kanan body (5%) */
             z-index: 10000;
-            /* Agar tombol tetap di atas elemen lain */
         }
 
         .hamburger span {
@@ -58,6 +54,7 @@
             text-align: center;
             z-index: 9999;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            font-family: georgia;
         }
 
         .nav-menu.active {
@@ -86,7 +83,8 @@
 
         .album-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* Disesuaikan agar card landscape terlihat ideal di layar lebar */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
         }
 
@@ -102,16 +100,17 @@
         }
 
         .album-card:hover {
-            transform: translateY(-6px) scale(1.04) rotate(2deg);
+            transform: translateY(-6px) scale(1.03) rotate(1deg);
             border-color: #00ff66;
             box-shadow: 0 12px 25px rgba(0, 255, 102, 0.2);
             z-index: 2;
         }
 
+        /* UBAH KE RASIO LANDSCAPE 16:9 */
         .cover-container {
             position: relative;
             width: 100%;
-            padding-top: 100%;
+            padding-top: 56.25%; /* Rasio 16:9 (9 / 16 * 100%) */
             background-color: #1f2430;
             overflow: hidden;
         }
@@ -259,7 +258,6 @@
             border: none;
         }
 
-        /* Tombol Play Overlay di Atas Gambar */
         .play-overlay {
             position: absolute;
             top: 0;
@@ -454,16 +452,16 @@
                 type: "The 1st EP",
                 cover: "https://image.weversejapan.com/official/live/cortis/contents/mvalbum/124/Thumbnail/b7753f623abe41d8ac809d44e5fd629e.png",
                 mvs: [
-                    { title: "Intro MV", embedUrl: "", cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" },
-                    { title: "Archive Track 01", embedUrl: "", cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" },
-                    { title: "Archive Track 02", embedUrl: "", cover: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&w=800&q=80" },
-                    { title: "Remix 01 Special MV", embedUrl: "", cover: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" },
-                    { title: "Remix 02 Studio Ver.", embedUrl: "", cover: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80" },
-                    { title: "Live Concert Edit 01", embedUrl: "", cover: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" },
-                    { title: "Live Concert Edit 02", embedUrl: "", cover: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=800&q=80" },
-                    { title: "Behind The Scene MV", embedUrl: "", cover: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80" },
-                    { title: "Acoustic Session", embedUrl: "", cover: "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?auto=format&fit=crop&w=800&q=80" },
-                    { title: "Final Encore Video", embedUrl: "", cover: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" }
+                    { title: "CORTIS (코르티스) 'GO!' Official MV", embedUrl: "https://youtu.be/WXS-o57VJ5w?si=B2q3jHd5chv3TpGV", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/11/Thumbnail/fb9cc849607749f8904bc284ccb83ae4.png" },
+                    { title: "CORTIS (코르티스) 'GO!' Conceptual Performance Film", embedUrl: "https://youtu.be/-fTvZfQoF-w?si=B-OnwCOGbGD-9b3-", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/12/Thumbnail/87e26c35b7e74955a20c6068a2fb6c24.png" },
+                    { title: "CORTIS (코르티스) 'What You Want' Conceptual Performance Film", embedUrl: "https://youtu.be/6MYB61hUaFg?si=c3QgrNw5CGa6iDYY", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/13/Thumbnail/83c08ec9379740eaac7bc6871bc05326.png" },
+                    { title: "CORTIS (코르티스) 'What You Want' Official MV", embedUrl: "https://youtu.be/e2OpbOv_JiQ?si=phEkypJ_pMp3meKo", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/18/Thumbnail/9072e3a490544582bac923673a1c24f4.png" },
+                    { title: "CORTIS (코르티스) 'What You Want' MV (Original Ver.)", embedUrl: "https://youtu.be/of-FAob3X9w?si=MFc8THFrRAPwPHnb", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/24/Thumbnail/a88006e20d504b13915566ea127dd3c1.png" },
+                    { title: "CORTIS (코르티스) 'FaSHioN' Official MV", embedUrl: "https://youtu.be/42wfEs7oIP8?si=J9Us3DBnAOF2VsQ1", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/29/Thumbnail/d39d1f5b3129418aa2325798672a428d.png"},
+                    { title: "CORTIS (코르티스) 'FaSHioN' Conceptual Performance Film", embedUrl: "https://youtu.be/WVkftpFjIDg?si=yZ9CZtabDFZE59L-", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/31/Thumbnail/1f8d64bfe443444aae651e8073a395c1.png" },
+                    { title: "CORTIS (코르티스) 'FaSHioN' MV (Original Ver.)", embedUrl: "https://youtu.be/rdB7ip3zQqg?si=bInHXWIF9S_B7xU7", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/34/Thumbnail/cc98d9e080ff40ab9f8bef13e025b13e.png" },
+                    { title: "CORTIS (코르티스) 'JoyRide' Official MV", embedUrl: "https://youtu.be/8QZeXvOjgGE?si=Xq-FTHuha49mKqyV", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/33/Thumbnail/1c25d531bf934021b5226778d49b11e2.png" },
+                    { title: "CORTIS (코르티스) 'Lullaby' Official MV", embedUrl: "https://youtu.be/8ej2YOBsimQ?si=ILcC-f8FF0KimcYI", cover: "https://image.weversejapan.com/official/live/cortis/contents/mv/37/Thumbnail/0f186659fcb24e7ebbdd33531e6f99c7.png" }
                 ]
             }
         ];
@@ -524,7 +522,6 @@
             mvModal.classList.add('active');
         }
 
-        // Fungsi memutar video setelah diklik
         function playVideo(index, embedUrl) {
             const container = document.getElementById(`thumb-${index}`);
             if (container) {
