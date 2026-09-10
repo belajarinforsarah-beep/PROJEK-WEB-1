@@ -17,8 +17,12 @@
             background-color: #0b0c10;
             color: #ffffff;
             font-family: 'Space Grotesk', sans-serif;
-            padding: 0 0 6rem 0;
-            /* Ubah padding atas jadi 0 agar rapat seperti kode kedua */
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+
         }
 
         /* HEADER & NAVIGASI */
@@ -64,11 +68,9 @@
             gap: 5px;
             cursor: pointer;
             width: fit-content;
-            margin-bottom: 1.5rem;
-            position: absolute;
-            top: 2rem;
-            right: 5%;
-            z-index: 10000;
+            /* Merapikan posisi hamburger di navbar */
+            position: static;
+            margin: 0;
         }
 
         .hamburger span {
@@ -123,11 +125,7 @@
             display: grid;
             /* Disesuaikan agar card landscape terlihat ideal di layar lebar */
             gap: 2.5rem;
-            justify-content: center; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 360px));
-            max-width: 1200px; /* Batas lebar maksimal grid agar tidak terlalu lebar */
-            margin: 0 auto;    /* Membuat kontainer grid rata tengah */
-            }
+        }
 
         .album-card {
             background-color: #12141a;
@@ -362,17 +360,22 @@
         }
 
         footer {
-            background-color: rgb(16, 48, 33);
+            background-color: rgb(35, 103, 72);
             text-align: center;
             color: rgb(205, 252, 252);
             width: 100%;
             bottom: 0;
             left: 0;
             position: fixed;
-            padding: 15px 0;
+            padding: 20px 10px;
             box-sizing: border-box;
             font-family: sans-serif;
-            z-index: 10;
+            margin-top: auto; /* PENTING: Menyorong footer hanya di akhir konten */
+            position: relative;
+        }
+
+        html {
+            height: 100%;
         }
     </style>
 </head>
