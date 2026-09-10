@@ -36,6 +36,7 @@
             padding: 10px 30px;
             /* Padding header yang pas */
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            font-family: sans-serif;
         }
 
         .logo-box {
@@ -121,9 +122,12 @@
         .album-grid {
             display: grid;
             /* Disesuaikan agar card landscape terlihat ideal di layar lebar */
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
-        }
+            justify-content: center; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 360px));
+            max-width: 1200px; /* Batas lebar maksimal grid agar tidak terlalu lebar */
+            margin: 0 auto;    /* Membuat kontainer grid rata tengah */
+            }
 
         .album-card {
             background-color: #12141a;
@@ -377,7 +381,7 @@
     <header>
         <div class="logo-box">
             <img src="2b64053aa52e4706ac5db831415cc435.png" alt="Logo CORTIS" class="header-logo">
-            <h1 class="header-title">Discography & Music Videos</h1>
+            <h1 class="header-title">MUSIC VIDEOS</h1>
         </div>
 
         <div class="hamburger" onclick="document.getElementById('nav-menu').classList.toggle('active')">
